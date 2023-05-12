@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        .active {
+            color: #C00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filter-tag-group">
+        <div class="tag-group">
+            <span class="filter-title active">Title</span>
+            <span class="show_filter_content">
+                <i class="fa fa-plus"></i>
+            </span>
+            <div class="row filter-content">Content</div>
+        </div>
+    </div>
+    <script>
+        $(".filter-tag-group .tag-group .show_filter_content").on('mouseenter', function () {
+            var $icon = $(this).find('i').toggleClass('fa-plus fa-minus');
+            var $group = $icon.closest('.tag-group');
+            $group.find('.filter-title').toggleClass('active');
+            $group.find('.filter-content').toggle();
+        });
+    </script>
+</body>
+
+</html>

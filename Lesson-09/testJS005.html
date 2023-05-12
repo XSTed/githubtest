@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="comlib.js"></script>
+    <style>
+        #multipli td {
+            width: 50px;
+            /* set a fixed width for the cells */
+            white-space: nowrap;
+            /* prevent the contents from wrapping to the next line */
+            overflow: hidden;
+            /* hide any overflowing content */
+            text-overflow: ellipsis;
+            /* show an ellipsis if the content is too long */
+        }
+
+        #multipli td {
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #F5F5F5;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <table id="multipli" border="1" style="text-align: center;">
+            <tr>
+                <td colspan="10">學生成績測試資料產生</td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td>國文</td>
+                <td>英文</td>
+                <td>數學</td>
+                <td>計算機概論</td>
+                <td>工廠實習</td>
+                <td>微積分</td>
+                <td>體育</td>
+                <td>平均成績</td>
+                <td>排名</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var level1 = 30,
+            level2 = 9;
+        var scores = []; // array to store average scores and row indices for each student
+        var count = Array(8).fill(0); // array to store count of scores less than 60 in each column
+
+        // generate random scores for each student
+        for (let i = 1; i <= level1; i++) {
+            var lastRow = document.getElementById("multipli").rows.length;
+            var tableTr = document.getElementById("multipli").insertRow(lastRow);
+
+            var td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = "student" + i;
+
+            var scoreSum = 0; // variable to store sum of scores for each student
+            for (let j = 1; j <= 7; j++) {
+                var td = tableTr.insertCell(tableTr.cells.length);
+                var score = rand(1, 100);
+                td.innerHTML = score;
+
+                // add score to sum
+                if (j <= 7) {
+                    scoreSum += score;
+                    if (score < 60) {
+                        count[j]++;
+                    }
+                }
+
+                // set color and font-weight based on score
+                if (score < 60) {
+                    td.style.color = "red";
+                    td.style.fontWeight = "bold";
+                } else if (score >= 90) {
+                    td.style.color = "green";
+                    td.style.fontWeight = "bold";
+                    if (score >= 95) {
+                        td.innerHTML = "*" + td.innerHTML;
+                    }
+                }
+            }
+
+            // calculate average score and store in array
+            var avgScore = scoreSum / 7;
+
+            scores.push({
+                avgScore: avgScore,
+                index: lastRow
+            });
+
+            // add average score to table
+            var td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = avgScore.toFixed(2);
+            if (avgScore < 60) {
+                td.style.color = "red";
+            }
+            // add ranking to table
+            var td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = "-";
+        }
+
+        // add row to table showing count of scores less than 60 in each column
+        var countRow = document.getElementById("multipli").insertRow();
+        var td = countRow.insertCell(0);
+        td.innerHTML = "不及格小計";
+        for (let j = 1; j <= 9; j++) {
+            var td = countRow.insertCell(j);
+            td.innerHTML = count[j];
+            if (j > 7) {
+                td.innerHTML = "--";
+            }
+        }
+
+        // sort scores array in descending order
+        scores.sort(function (a, b) {
+            return b.avgScore - a.avgScore;
+        });
+
+        // update rankings in table
+        for (let i = 0; i < scores.length; i++) {
+            var rank = i + 1;
+            var index = scores[i].index;
+            var tableTr = document.getElementById("multipli").rows[index];
+            tableTr.cells[tableTr.cells.length - 1].innerHTML = rank;
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    var level1 = 32,
+    level2 = 9;
+var scores = []; // array to store average scores for each student
+
+// generate random scores for each student
+for (let i = 1; i <= level1; i++) {
+    var lastRow = document.getElementById("multipli").rows.length;
+    var tableTr = document.getElementById("multipli").insertRow(lastRow);
+
+    var td = tableTr.insertCell(tableTr.cells.length);
+    td.innerHTML = "student" + i;
+
+    var scoreSum = 0; // variable to store sum of scores for each student
+    for (let j = 1; j <= 7; j++) {
+        var td = tableTr.insertCell(tableTr.cells.length);
+        var score = rand(1, 100);
+        td.innerHTML = score;
+
+        // add score to sum
+        if (j <= 7) {
+            scoreSum += score;
+        }
+
+        // set color and font-weight based on score
+        if (score < 60) {
+            td.style.color = "red";
+            td.style.fontWeight = "bold";
+        } else if (score >= 90) {
+            td.style.color = "green";
+            td.style.fontWeight = "bold";
+            if (score >= 95) {
+                td.innerHTML += "*";
+            }
+        }
+    }
+
+    // calculate average score and store in array
+    var avgScore = scoreSum / 7;
+    scores.push({
+        avgScore: avgScore,
+        index: i
+    });
+
+    // add average score to table
+    var td = tableTr.insertCell(tableTr.cells.length);
+    td.innerHTML = avgScore.toFixed(2);
+
+    // add ranking to table
+    var td = tableTr.insertCell(tableTr.cells.length);
+    td.innerHTML = "-";
+}
+
+// sort scores array in descending order
+scores.sort(function(a, b) {
+    return b.avgScore - a.avgScore;
+});
+
+// update rankings in table
+for (let i = 0; i < scores.length; i++) {
+    var rank = i + 1;
+    var index = scores[i].index;
+    var tableTr = document.getElementById("multipli").rows[index];
+    tableTr.cells[tableTr.cells.length - 1].innerHTML = rank;
+}
+
+ -->

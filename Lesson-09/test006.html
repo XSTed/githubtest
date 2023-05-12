@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美麗旅行社 BEAUTIFUL TRAVEL SERVICE</title>
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="test001.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
+
+<body>
+<section id="header">
+    <div class="container-fluid">
+        <div class="row">
+
+          <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-transparent">
+
+            <a class="navbar-brand" href="#index.php">
+              <img src="images/Napoleon.png" alt="LOGO" class="fas img-fluid">
+              <!-- <i class="fas fa-home" aria-hidden="true" style="color:#FF000F;font-size:40px;margin-top:-5px;margin-left:10px;"></i> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <!-- <img src="images/Napoleon.tif" alt="LOGO" class="fas img-fluid"> -->
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#carouselExampleCaptions" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">站長推薦
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#content" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          旅行精選
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="nav-item dropend">
+                              <a class="dropdown-item dropdown-toggle" href="#">
+                                機票+住宿
+                              </a>
+                              <ul class="dropdown-menu">
+                                <!-- <li><a class="dropdown-item" href="#">訂單查詢</a></li>
+                                <li>
+                                    <hr class="dropdown-divider"> -->
+                                </li>
+                                <li><a class="dropdown-item" href="#">搜好房 </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">找機票 </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">新! 優惠專區 </a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#buyrules">服務說明</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">連絡我們</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            會員中心
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">訂單查詢</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">退訂／退款查詢</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">現金積點查詢</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">折價券查詢</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            會員中心
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#">
+                                  訂單查詢
+                                </a>
+                                <ul class="dropdown-menu">
+                                  <!-- <li><a class="dropdown-item" href="#">訂單查詢</a></li>
+                                  <li>
+                                      <hr class="dropdown-divider"> -->
+                                  </li>
+                                  <li><a class="dropdown-item" href="#">退訂／退款查詢</a></li>
+                                  <li>
+                                      <hr class="dropdown-divider">
+                                  </li>
+                                  <li><a class="dropdown-item" href="#">現金積點查詢</a></li>
+                                  <li>
+                                      <hr class="dropdown-divider">
+                                  </li>
+                                  <li><a class="dropdown-item" href="#">折價券查詢</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">登入</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">註冊</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">登出</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex" role="search">
+                            <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="1000">
+                    <img src="images/pic21new.jpg" class="d-block w-100" alt="英國倫敦大橋，熱門旅遊景點">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>英國倫敦大橋，熱門旅遊景點</h5>
+                      <p>英國團行程，首創倫敦、愛丁堡－各２晚５星連泊，一共４晚５星尊榮體驗！倫敦五星飯店選用緊鄰皇家海德公園的InterContinental洲際酒店</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item active" data-bs-interval="1000">
+                    <img src="images/pic22new.jpg" class="d-block w-100" alt="安納西，法國定製旅遊決不可錯過的田園小鎮">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>安納西，法國定製旅遊決不可錯過的田園小鎮</h5>
+                      <p>北靠峻峭的阿爾卑斯山，南臨清冽明透的安納西湖，絕佳的位置造就她獨特而動人的姿色。</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item active" data-bs-interval="1000">
+                    <img src="images/pic23new.jpg" class="d-block w-100" alt="日本關東 伊豆‧東京春之櫻">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>日本關東 伊豆‧東京春之櫻</h5>
+                      <p>櫻花由含苞至全開大約十天，而日本人最愛在三分開至八分開的期間舉行花見大會、櫻花祭、花見船、泡湯賞櫻。</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+    </div>
+</section>
+<hr>
+<section id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 offset-1">
+                <div class="row">
+                    <div class="col-2"><img src="images/40x40.jpg" alt="HOT" class="rounded-circle img-fluid"></div>
+                    <div class="col-10 pt-2">推薦日本自由遊行的套裝行程</div>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <div class="row">
+                    <div class="col-2"><img src="images/40x40.jpg" alt="HOT" class="rounded-circle img-fluid"></div>
+                    <div class="col-10 pt-2">精選美國西岸10大必去行程</div>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <div class="row">
+                    <div class="col-2"><img src="images/40x40.jpg" alt="HOT" class="rounded-circle img-fluid"></div>
+                    <div class="col-10 pt-2">最熱門紐西蘭與澳洲新人蜜月行程</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center">
+            <div class="card col-sm-4">
+                <img class="card-img-top" src="images/pic31.jpg" alt="萬象泰國～五星帝寶‧希爾頓海景‧漫步雲端精選５天(含稅)">
+                <div class="card-body">
+                    <h5 class="card-title">萬象泰國～五星帝寶‧希爾頓海景‧漫步雲端精選５天(含稅)</h5>
+                    <p class="card-text">全球最高的《空中餐廳》，甫開幕的《BREEZE》餐廳提供獨特的雲端體驗，這個全球最高的空中餐廳與酒吧高居海拔238英尺。</p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+            <div class="card col-sm-4">
+                <img class="card-img-top" src="images/pic32.jpg" alt="唯美華欣～夢幻小希臘５天(無購物含小費及稅).６人成行">
+                <div class="card-body">
+                    <h5 class="card-title">唯美華欣～夢幻小希臘５天(無購物含小費及稅).６人成行</h5>
+                    <p class="card-text">《昭帕耶公主號》享用自助晚餐。船上準備美味可口的多樣式歐式自助餐＋飲料。搭乘遊船欣賞曼谷東方威尼斯河畔浪漫夜景。</p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+            <div class="card col-sm-4">
+                <img class="card-img-top" src="images/pic33.jpg" alt="九州花賞５天～和牛燒烤．豪斯登堡鬱金香季．櫻花雙溫泉">
+                <div class="card-body">
+                    <h5 class="card-title">九州花賞５天～和牛燒烤．豪斯登堡鬱金香季．櫻花雙溫泉</h5>
+                    <p class="card-text">湯布院地區最具代表性的觀光景點之一，當陽光照耀在清澈的湖面時，更是如同夢幻仙境一樣迷人，是湯布院最著名的湖泊。</p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+            <div class="card col-sm-4 mt-5">
+                <img class="card-img-top" src="images/pic34.jpg" alt="東京花賞雙溫泉5天～足利紫藤園．秩父芝櫻．海濱粉蝶戀">
+                <div class="card-body">
+                    <h5 class="card-title">東京花賞雙溫泉5天～足利紫藤園．秩父芝櫻．海濱粉蝶戀</h5>
+                    <p class="card-text">樂園是水戶籓第9代籓主德川齊昭親自設計規劃的池泉迴遊自然風景式的金澤市的兼六園、偕樂園和旁邊的千波公園合併為「偕樂園公園」
+                    </p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+            <div class="card col-sm-4 mt-5">
+                <img class="card-img-top" src="images/pic35.jpg" alt="藍寶石公主號～沖繩、石垣島、宮古島自主遊５天">
+                <div class="card-body">
+                    <h5 class="card-title">藍寶石公主號～沖繩、石垣島、宮古島自主遊５天</h5>
+                    <p class="card-text">建造於14世紀末，為琉球歷代國王居住城都，同時也是琉球王國的政治中心，讓人彷彿走進時光的隧道，感受昔日琉球文化與優美景色。
+                    </p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+            <div class="card col-sm-4 mt-5">
+                <img class="card-img-top" src="images/pic36.jpg" alt="美加東八大名城十二大風味餐精選１２天">
+                <div class="card-body">
+                    <h5 class="card-title">美加東八大名城十二大風味餐精選１２天</h5>
+                    <p class="card-text">紐約！人們嚮往的天堂之地！被暱稱為「大蘋果」，源自20世紀20年代。《紐約晨遞報》賽馬專欄作者的一個暱稱，人人都願追逐之。
+                    </p>
+                    <a href="#" class="btn btn-primary">更多資訊</a>
+                    <a href="#" class="btn btn-purple">放入購物車</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <nav aria-label="..." class="mx-auto pt-2">
+             <ul class="pagination justify-content-center"><!--  -->
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+</section>
+<hr>
+<section id="buyrules" class="bgcolor">
+  <div class="container text-center">
+      <div class="row">
+
+          <div class="col-sm-12">
+              <h2><i class="fas fa-envelope" aria-hidden="true"></i></h2>
+              <h2>我們的服務</h2>
+          </div>
+
+      </div>
+  </div>
+  <div class="row">
+
+      <div class="col-sm-2 offset-1">
+          <h2><i class="fas fa-user" aria-hidden="true"></i></h2>
+          <h4>客服中心</h4>
+          <h6>服務中心</h6>
+          <h6>常見問題</h6>
+          <h6>隱私權政策</h6>
+          <h6>Cookie政策</h6>
+          <h6>服務條款</h6>
+          <h6>管理Cookie設定</h6>
+          <button class="btn btn-sm btn-danger"><i class="fas fa-comment-dots fa-lg pe-2" aria-hidden="true"></i>Show More</button>
+      </div>
+
+      <div class="col-sm-2">
+          <h2><i class="fas fa-align-justify" aria-hidden="true"></i></h2>
+          <h4>公司</h4>
+          <h6>關於我們</h6>
+          <h6>職缺情報</h6>
+          <h6>新聞報導</h6>
+          <h6>旅遊部落格</h6>
+          <h6>PointsMAX</h6>
+          <button class="btn btn-sm btn-danger"><i class="fas fa-user fa-lg pe-2" aria-hidden="true"></i>Show More</button>
+      </div>
+
+      <div class="col-sm-2">
+          <h2><i class="fas fa-angle-double-down" aria-hidden="true"></i></h2>
+          <h4>目的地</h4>
+          <h6>國家/地區</h6>
+          <h6>城市</h6>
+          <button class="btn btn-sm btn-danger"><i class="fas fa-thumbs-up fa-lg pe-2" aria-hidden="true"></i>Show More</button>
+      </div>
+
+      <div class="col-sm-2">
+          <h2><i class="far fa-address-card" aria-hidden="true"></i> </h2>
+          <h4>成為合作夥伴</h4>
+          <h6>YCS夥伴平台</h6>
+          <h6>Partner Hub</h6>
+          <h6>供應商招募</h6>
+          <h6>行銷夥伴</h6>
+          <h6>Connectivity平台</h6>
+          <button class="btn btn-sm btn-danger"><i class="fas fa-ambulance fa-lg pe-2" aria-hidden="true"></i>Show More</button>
+      </div>
+
+      <div class="col-sm-2">
+          <h2><i class="fas fa-car" aria-hidden="true"></i></h2>
+          <h4>行動訂房神器</h4>
+          <h6>iOS免費下載</h6>
+          <h6>Android免費下載</h6>
+          <button class="btn btn-sm btn-danger"><i class="fas fa-balance-scale fa-lg pe-2" aria-hidden="true"></i>Show More</button><!--  -->
+      </div>
+
+
+  </div>
+</section>
+<hr>
+<hr>
+<section id="footer">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-lg-12" id="contact">
+        <h6>美麗旅行社 地址：40767台中市西屯區工業區一路100號 電話：04-23592181 免付費電話：0800-123456</h6>
+        <h6>COPYRIGHT &copy; BEAUTIFUL TRAVEL SERVICE CO, ALL RIGHT RESERED.
+        </h6>
+      </div>
+    </div>
+  </div>
+</section>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+    <script>
+       $(window).scroll(function() {
+  if ($(document).scrollTop() > 50) {
+    $('nav').addClass('shrink');
+    $('.fas.img-fluid').addClass('rB');
+  } else {
+    $('nav').removeClass('shrink');
+    $('.fas').removeClass('rB');
+  }
+});
+
+    </script>
+</body>
+
+</html>

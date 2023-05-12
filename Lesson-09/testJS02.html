@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a;
+        var a01=100;
+        const c01 ="c01這是常數宣告值，宣告後無法更改。";
+        document.write("<h1>設定變數a，沒有設定值為"+a+"</h1>");
+        document.write("<h1>設定變數a01="+a01+"</h1>");
+        document.write("<hr>");
+        b01=showVar();
+        b01=b01+200; //函數區域內宣告變數b01在外部測試計算累加200
+        document.write("<h1>b01="+b01+"</h1>");
+        document.write("<hr>");
+        
+
+        document.write("<h1>"+c01+"</h1>");
+        var c02="更改c01這個變數值的內容文字";
+        document.write("<h1>"+c01+"</h1>"); //測試在更改後印出c01變數
+
+        function showVar() {
+            a01=a01+200;
+            document.write("<h1>在函數內使用變數a01+200="+a01+"</h1>");
+            let b01=800; //let函數區域內宣告使用變數
+            document.write("<h1>在函數內使用let宣告變數b01="+b01+"</h1>");
+            document.write("<h1>在函數內使用const宣告變數c01="+c01+"</h1>");
+
+            return b01;
+        }
+        
+    </script>
+</body>
+</html>

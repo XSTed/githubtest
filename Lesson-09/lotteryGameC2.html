@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerball電腦選號</title>
+    <script src="comlib.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-image: url("https://cdn.wallpapersafari.com/89/9/JN8sdo.png");
+            background-size: cover;
+            perspective: 2000px;
+            color: #000000;
+        }
+
+        .wrapper {
+            padding: 10px;
+            background-color: rgb(10, 36, 112);
+            width: 46vw;
+            height: 80vh;
+            margin: 5vh 0;
+            border-radius: 50px;
+            position: relative;
+            top: 30px;
+            left: 50vw;
+            transform: translateX(-50%);
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 250, 237, 0.2), 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .wrapper.award {
+            animation: wrapperAward 0.8s infinite;
+        }
+
+        @keyframes wrapperAward {
+            10% {
+                background-color: orange;
+            }
+
+            60% {
+                background-color: yellowgreen;
+            }
+
+            100% {
+                background-color: orangered;
+            }
+        }
+
+        h1.heading {
+            display: block;
+            padding: 5px 20px;
+            margin: 0;
+            background-color: lightgoldenrodyellow;
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            color: orangered;
+            border: 2px solid orange;
+            outline: 8px dotted orangered;
+            top: -10px;
+            left: 50%;
+            z-index: 20;
+            transform: translateX(-50%) rotateX(-40deg);
+        }
+
+        h1.heading.award {
+            background-color: yellow;
+            animation: headingAward 0.8s infinite;
+        }
+
+        @keyframes headingAward {
+            10% {
+                outline: 8px dotted orange;
+            }
+
+            60% {
+                outline: 5px dotted yellowgreen;
+            }
+
+            100% {
+                outline: 8px dotted orangered;
+            }
+
+        }
+
+        main {
+            border-radius: 48px 48px 5px 5px;
+            box-shadow: inset 0 0 50px rgba(10, 36, 112, 0.4), inset 0 0 10px rgba(10, 36, 112, 0.4);
+            flex-wrap: wrap;
+            display: flex;
+            background-color: lightblue;
+            padding: 10px 5px;
+        }
+
+        .hero {
+            border-radius: 5px 5px 48px 48px;
+            box-shadow: inset 0 0 50px rgba(10, 36, 112, 0.4), inset 0 0 10px rgba(10, 36, 112, 0.4);
+            flex-wrap: wrap;
+            display: flex;
+            background-color: lightblue;
+            padding: 10px 5px;
+        }
+
+        footer {
+            padding: 10px;
+            height: 50vw;
+            text-align: center;
+        }
+
+        .btn-holder {
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            display: flex;
+        }
+
+        .card-box {
+            cursor: pointer;
+            flex: 25px;
+            padding: 10px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: 25px;
+            line-height: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            margin-left: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #999;
+            color: #555;
+            border-radius: 50%;
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2), inset -5px -5px 8px rgba(255, 255, 255, 0.1);
+            background-color: #fff;
+
+        }
+
+        .card-box:hover {
+            color: orangered;
+        }
+
+        .card-box.selectgreen:hover {
+            color: orangered;
+        }
+
+        .card-box.selectred:hover {
+            color: red;
+        }
+
+        .card-box:active {
+            color: green;
+            background: yellowgreen;
+        }
+
+        .btn {
+            margin: 10px 0;
+            cursor: pointer;
+            flex: 20%;
+            flex-grow: 0;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            display: inline-block;
+            box-shadow: inset -5px -5px 10px rgba(1, 122, 138, 0.6), inset -5px -5px 8px rgba(255, 255, 255, 0.2), inset 2px 2px 5px rgba(255, 255, 255, 0.1), inset 1px 1px 2px beige;
+            background-color: lightskyblue;
+            padding: 12px 20px 3px;
+            border-radius: 0px;
+            color: rgba(10, 36, 112, 0.8);
+            font-weight: 700;
+            transition: 0.1s;
+            border-radius: 9px;
+        }
+
+        .btn:active {
+            padding: 7px 20px 3px;
+            color: rgba(10, 36, 112, 1);
+            box-shadow: inset 5px 5px 10px rgba(1, 122, 138, 0.6), inset 5px 5px 8px rgba(255, 255, 255, 0.4);
+
+        }
+
+        .lotteryNum {
+            color: #FFF;
+            font-family: sans-serif;
+        }
+
+        h2 span {
+            display: inline-block;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            margin: 0 5px;
+            line-height: 40px;
+            background-color: coral;
+            color: beige;
+            border-radius: 50%;
+            font-size: 22px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.5), inset -5px -5px 8px rgba(255, 255, 255, 0.2);
+            font-weight: 400;
+            animation: flyIn 1s both linear;
+        }
+
+        h2 span::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -8px;
+            left: -5px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 4%, rgba(196, 188, 96, 0) 25%);
+        }
+
+        h2 span:nth-child(1) {
+            animation: flyIn 1s 0.1s both linear linear;
+        }
+
+        h2 span:nth-child(2) {
+            animation: flyIn 1s 0.2s both linear;
+        }
+
+        h2 span:nth-child(3) {
+            animation: flyIn 1s 0.3s both linear;
+        }
+
+        h2 span:nth-child(4) {
+            animation: flyIn 1s 0.4s both linear;
+        }
+
+        h2 span:nth-child(5) {
+            animation: flyIn 1s 0.5s both linear;
+        }
+
+        @keyframes flyIn {
+            0% {
+                transform: translateX(500px) rotate(360deg);
+            }
+
+            90% {
+                transform: translateX(-20px) rotate(100deg);
+            }
+
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+        }
+
+        .selected {
+            background: coral;
+            color: #FFF;
+        }
+
+        .selectgreen {
+            background-color: lightgreen;
+        }
+
+        .selectaqua {
+            background-color: rgb(90, 255, 255);
+        }
+
+        .selected.selectgreen {
+            background-color: red;
+            color: #FFF;
+            font-weight: 900;
+            outline: 4px dotted orange;
+        }
+
+        h2 {
+            color: #EEE;
+            font-weight: 700;
+        }
+
+        #resultModal h2 {
+            color: #2a2828;
+            font-weight: 900;
+            animation: shake .25s infinite;
+        }
+
+        @keyframes shake {
+            10% {
+                transform: rotate(12deg);
+            }
+
+            20% {
+                transform: rotate(-12deg);
+            }
+
+            30% {
+                transform: rotate(6deg);
+            }
+
+            40% {
+                transform: rotate(-6deg);
+            }
+        }
+
+        /* modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 100;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 45rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 55px rgb(255, 255, 201);
+            border-radius: 30px;
+            border: 1px solid #525252;
+            color: #1c1919;
+            font-weight: 900;
+        }
+
+        .close {
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            text-align: center;
+            font-weight: bold;
+            padding: 0.7em 2em;
+            border: 3px solid #00ddff;
+            border-radius: 5px;
+            position: relative;
+            color: #000;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s ease all;
+            z-index: 1;
+            background-color: transparent;
+        }
+
+        .close:before {
+            transition: 0.5s all ease;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            opacity: 0;
+            content: '';
+            background-color: #00ddff;
+            z-index: -1;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+        }
+
+        .close:hover:before,
+        .close:focus:before {
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+
+        .close:active {
+            transform: scale(0.9);
+        }
+
+        /*  */
+        /* .calculator {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: fixed;
+            left: 90%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            padding: 20px 0px 0px 100px;
+            border-radius: 50px;
+            color: white;
+        }
+
+        input {
+            padding: 7px;
+            width: 70%;
+            margin-top: 7px;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1 class="heading">Powerball®</h1>
+    <div class="wrapper">
+
+        <main></main>
+        <div class="hero"></div>
+
+        <footer>
+            <div class="btn-holder">
+                <h4 type="button" class="btn create" onclick="numGenerator();">抽爆</h4>
+                <h4 type="button" class="btn computerNum" onclick="computerNumGenerator();">電腦選號</h4>
+            </div>
+
+            <p class="lotteryNum"></p>
+            <h2 class="info">請選擇5+1個號碼，開始抽獎</h2>
+        </footer>
+
+    </div>
+    <div class="center">
+
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close">您已詳細閱讀規則後關閉&times;</span>
+                <p>Powerball®</p>
+                <p>Powerball® 每次投注 2 美元。在愛達荷州和蒙大拿州，Powerball 與 Power Play® 捆綁銷售，每場比賽的最低購買價為 3 美元。</p>
+                <p>為白球選擇 1 到 69 之間的五個數字，然後為白球選擇一個 1 到 26 之間的數字強力球。</p>
+                <p>Choose your numbers on a play slip or let the lottery terminal randomly pick your numbers.</p>
+                <p>每週一、週三和周六晚上 10 點 59 分在佛羅里達州彩票抽獎中開獎Tallahasee的工作室。</p>
+                <p>強力球頭獎會一直增長，直到中獎為止。玩家通過匹配 9 種方式中的一種來贏得獎品贏。這以任意順序匹配所有五個白球和紅色強力球即可贏得頭獎。</p>
+                <p>頭獎中獎者可以選擇以年金形式領取獎金，分 30 次分期付款29年，或一次性付款。兩種公佈的獎品選項均先於聯邦和司法管轄區徵稅。</p>
+                <img src="lotteryHW01.png" alt="prizeChart">
+                <img src="lotteryHW02.png" alt="oddChart">
+            </div>
+        </div>
+    </div>
+
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close2">&times;</span>
+            <h2>中獎結果🎉🎉🎉</h2>
+            <p class="result"></p>
+        </div>
+    </div>
+
+    <!-- <div class="calculator">
+        <h1>計算機</h1>
+        <p>您付的錢 (₹) :</p>
+        <p> <input id="amount" type="number" onchange="Calculate()"></p>
+
+        <p>玩的次數 :</p>
+        <p> <input id="playNum" type="number" onchange="Calculate()" readonly></p>
+
+        <p>中獎金額 :</p>
+        <p> <input id="prizeNum" type="number" onchange="Calculate()" readonly></p>
+
+        <h2 id="total"></h2>
+    </div> -->
+
+    <script type="text/javascript">
+
+        // const amount = document.querySelector("#amount").value;
+        // let playNum = 0;
+        // let prizeNum = 0;
+        // document.querySelector("#playNum").value = playNum;
+        // document.querySelector("#prizeNum").value = prizeNum
+        // if (amount < 2) {
+        //     return;
+        // }
+        // if (playNum < 0) {
+        //     return;
+        // }
+        // function Calculate() {
+        //     // Calculating total payment
+        //     const total = playNum * (-2) + prizeNum + amount;
+
+        //     document.querySelector("#total")
+        //         .innerHTML = "總金額 : (₹)" + total;
+        // }
+
+        window.addEventListener('load', function () {
+            var modal = document.querySelector('.modal');
+            var closeButton = document.querySelector('.close');
+
+            modal.style.display = 'block';
+
+            closeButton.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+        });
+
+        let gamePlayed = false;
+        let computerPlayed = false;
+        let selectedArr = [];  // 裝第1區
+        let selectedArr2 = []; // 裝第2區
+        for (let i = 1; i < 70; i++) {  // 產生第1區 70
+            let upDiv = document.createElement("div");
+            upDiv.className = "card-box";
+            upDiv.innerHTML = i;
+            document.querySelector("main").appendChild(upDiv);
+        }
+
+        for (let i = 1; i < 27; i++) {  // 產生第2區 27
+            let downDiv = document.createElement("div");
+            downDiv.className = "card-box";
+            downDiv.innerHTML = i;
+            document.querySelector(".hero").appendChild(downDiv);
+        }
+        // 第1區動作規則
+        document.querySelectorAll("main .card-box").forEach((card) => {
+            card.addEventListener("mousedown", function (e) {
+                let text = this.textContent;
+                if (document.querySelectorAll("main .selectgreen").length >= 5 && !card.classList.contains("selectgreen")) {
+                    document.querySelector("h2.info").textContent = "本區最多5個!!";
+                } else {
+                    if (selectedArr.includes(text)) {
+                        selectedArr.splice(selectedArr.indexOf(text), 1);
+                        this.classList.remove("selectgreen");
+                    } else {
+                        if (selectedArr.length < 5) {
+                            selectedArr.push(text);
+                            this.classList.add("selectgreen");
+                        } else {
+                            selectedArr.splice(4, 1);
+                            document.querySelector(`.card-box:nth-of-type(${selectedArr.length + 1})`).classList.remove("selectgreen");
+                            selectedArr.push(text);
+                            this.classList.add("selectgreen");
+                        }
+                    }
+                }
+            });
+        });
+
+        // The issue with your code might be that you are adding the event listener to all card boxes 
+        // without checking if they are already selected or not. 
+        // You can fix this by checking if the card box is already selected before adding the event listener.
+        // && !card.classList.contains("selectgreen")
+
+        // 第2區動作規則
+        document.querySelectorAll(".hero .card-box").forEach((card) => {
+            card.addEventListener("mousedown", function (e) {
+                if (document.querySelectorAll(".hero .selectaqua").length == 1 && !card.classList.contains("selectaqua")) {
+                    document.querySelector("h2.info").textContent = "本區最多1個!!";
+                } else {
+                    let text = this.textContent;
+                    if (selectedArr2.includes(text)) {
+                        selectedArr2.splice(selectedArr2.indexOf(text), 1);
+                        this.classList.toggle("selectaqua");
+                    } else {
+                        selectedArr2.push(text);
+                        this.classList.add("selectaqua");
+                    }
+                }
+            });
+        });
+
+        function numGenerator() {
+            if (gamePlayed) {
+                // 清空重新開始遊戲
+                gamePlayed = false;
+                selectedArr.length = 0;
+                selectedArr2.length = 0;
+                document.querySelectorAll('.card-box').forEach(cardBox => {
+                    cardBox.classList.remove('selected', 'selectgreen', 'selectaqua');
+                });
+                document.querySelector('.lotteryNum').innerHTML = "";
+                document.querySelector('h2.info').textContent = '';
+                document.querySelector('h1.heading').classList.remove('award');
+                document.querySelector('.wrapper').classList.remove('award');
+            }
+            // 防止連續重按，因為上面已經先清空所以不會直接再次產生號碼
+            if (selectedArr.length < 5 || selectedArr2.length < 1) {
+                return;
+            }
+            if (!gamePlayed || computerPlayed) {
+                gamePlayed = true;
+                let balls = [];
+                let counter = 0;
+                let counter2 = 0;
+                // playNum++;
+                let specialNum = rand(1, 26);  //產生第2區開獎號碼 26
+                document.querySelector('h2.info').textContent = '';
+
+                selectedArr.sort(function (a, b) {
+                    return a - b;
+                });
+                // 主要產生開獎號碼程式
+                for (let i = 0; i < 5; i++) {
+                    let chkData = rand(1, 10); //69
+                    while (balls.includes(chkData)) {
+                        chkData = rand(1, 10); //69
+                    }
+                    balls.push(chkData);
+                }
+                balls.sort(function (a, b) {
+                    return a - b;
+                });
+                //檢查是否中獎
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        if (balls[i] == selectedArr[j]) {
+                            counter++;
+                        }
+                    }
+                }
+                if (specialNum == selectedArr2[0]) {
+                    counter2++;
+                }
+
+                let ballsString = balls.join("</span><span>");
+                let selectedArrString = selectedArr.join("</span><span>");
+
+                document.querySelector(".lotteryNum").innerHTML =
+                    "<h2>樂透號碼：<span>" + ballsString + "</span></h2>" +
+                    "<h2>特別號碼：<span>" + conv(specialNum) + "</span></h2>" +
+                    "<h2>你的號碼：<span>" + selectedArrString + "</span></h2>" +
+                    "<h2>你的特別號碼：<span>" + conv(selectedArr2[0]) + "</span></h2>";
+
+                let resultElement = document.querySelector('.result');
+                let modal = document.getElementById('resultModal');
+                let closeModal = document.querySelector('.close2');
+                console.log(counter);
+                if (counter2 >= 1 || (counter >= 1 && counter2 >= 1) || counter >= 3) {
+                    document.querySelector('h1.heading').classList.add('award');
+                    document.querySelector('.wrapper').classList.add('award');
+                    if (counter == 5 && counter2 == 1) {
+                        resultElement.textContent = "恭喜你中頭獎了！獎金150萬美元!!!";
+                    } else if (counter == 5) {
+                        resultElement.textContent = "恭喜你中二獎了！獎金100萬美元!!!";
+                    } else if (counter == 4 && counter2 == 1) {
+                        resultElement.textContent = "恭喜你中三獎了！獎金5萬美元!!!";
+                    } else if (counter == 4) {
+                        resultElement.textContent = "恭喜你中四獎了！獎金100美元!!!";
+                    } else if (counter == 3 && counter2 == 1) {
+                        resultElement.textContent = "恭喜你中五獎了！獎金100美元!!!";
+                    } else if (counter == 3) {
+                        resultElement.textContent = "恭喜你中六獎了！獎金7美元!!!";
+                    } else if (counter == 2 && counter2 == 1) {
+                        resultElement.textContent = "恭喜你中七獎了！獎金7美元!!!";
+                    } else if (counter == 1 && counter2 == 1) {
+                        resultElement.textContent = "恭喜你中八獎了！獎金4美元!!!";
+                    } else if (counter2 == 1) {
+                        resultElement.textContent = "恭喜你中九獎了！獎金4美元!!!";
+                    }
+                    // Show the modal with the lottery result
+                    modal.style.display = "block";
+                } else {
+                    resultElement.textContent = "很遺憾, 你沒中獎○";
+                }
+
+                // Close the modal when the close button is clicked
+                closeModal.onclick = function () {
+                    modal.style.display = "none";
+                }
+
+                // Close the modal when the user clicks outside the modal
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+                if (document.querySelectorAll("main .selectgreen").length == 5 && document.querySelectorAll(".hero .selectaqua").length == 1 && balls.length == 5) {
+                    document.querySelector("h2.info").textContent = "再按一次『抽爆』或『電腦選號』將重新開始!";
+                    return;
+                }
+            }
+        }
+
+        function computerNumGenerator() {
+            let computerPlayed = true;
+
+            // 清空重新開始遊戲
+            gamePlayed = false;
+            selectedArr.length = 0;
+            selectedArr2.length = 0;
+            document.querySelectorAll('.card-box').forEach(cardBox => {
+                cardBox.classList.remove('selected', 'selectgreen', 'selectaqua');
+            });
+            document.querySelector('.lotteryNum').innerHTML = "";
+            document.querySelector('h2.info').textContent = '';
+            document.querySelector('h1.heading').classList.remove('award');
+            document.querySelector('.wrapper').classList.remove('award');
+
+            selectedArr = [];
+            selectedArr2 = [];
+            let computerSpecialNum = rand(1, 26);  //產生第2區開獎號碼 26
+            document.querySelector('h2.info').textContent = '';
+
+            for (let i = 0; i < 5; i++) {
+                let chkData = rand(1, 10); //69
+                while (selectedArr.includes(chkData)) {
+                    chkData = rand(1, 10); //69
+                }
+                selectedArr.push(chkData);
+            }
+            selectedArr2.push(computerSpecialNum);
+            selectedArr.sort(function (a, b) {
+                return a - b;
+            });
+            // console.log(selectedArr);
+            // console.log(selectedArr2);
+            // 要把selectedArr和selectedArr2的值渲染到card-box上
+            const cardBoxes1 = document.querySelectorAll('main .card-box');
+            selectedArr.forEach(num => {
+                cardBoxes1[num - 1].classList.add('selectgreen');
+            });
+            const cardBoxes2 = document.querySelectorAll('.hero .card-box');
+            selectedArr2.forEach(num => {
+                cardBoxes2[num - 1].classList.add('selectaqua');
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>

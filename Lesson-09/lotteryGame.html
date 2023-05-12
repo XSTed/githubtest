@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威力彩電腦選號小程式</title>
+    <script src="comlib.js"></script>
+</head>
+
+<body>
+    <h3>威力採電腦選號，javascript產生小程式</h3>
+    <form action="" id="form1" name="form1" method="post">
+        <p>第一區範圍</p>
+        <p>啟始數：<input type="number" name="startBall" id="startBall" value="">
+            結束數：<input type="number" name="endBall" id="endBall" value="">
+            產出球數：<input type="number" name="getBall" id="getBall" value="">
+        </p>
+        <p>第二區範圍</p>
+        <p>
+            啟始數：<input type="number" name="startBall2" id="startBall2" value="">
+            結束數：<input type="number" name="endBall2" id="endBall2" value="">
+        </p>
+        <input type="button" name="button" id="button" value="產生電腦選號" onclick="choiceNumber();">
+    </form>
+    <hr>
+    <div id="show" name="show">
+        <h1>威力彩電腦選號產生結果</h1>
+        <h2>第一區號碼：</h2>
+        <h2>第二區號碼：</h2>
+    </div>
+    <script type="text/javascript">
+        //設定用物件的方式定義變數
+        var area1 = {
+            startBall: 1,
+            endBall: 49,
+            getBall: 6,
+            result: "",
+        };
+        var area2 = {
+            startBall: 1,
+            endBall: 8,
+            result: "",
+        };
+        //設定表單初始值
+        document.getElementById("startBall").value = area1.startBall;
+        document.getElementById("endBall").value = area1.endBall;
+        document.getElementById("getBall").value = area1.getBall;
+        document.getElementById("startBall2").value = area2.startBall;
+        document.getElementById("endBall2").value = area2.endBall;
+        var ctrlCss = document.getElementById("show");
+        //ctrlCss.style.display = 'none'; 先隱藏結果樣板
+
+        function choiceNumber() {
+            //從表單取回被修改的值
+            area1.result = "";
+            area2.result = "";
+            area1.startBall = document.getElementById("startBall").value;
+            area1.endBall = document.getElementById("endBall").value;
+            area1.getBall = document.getElementById("getBall").value;
+            area2.startBall = document.getElementById("startBall2").value;
+            area2.endBall = document.getElementById("endBall2").value;
+            let append = true;  //設定Ball是否被新增
+            let Ball = new Array();
+
+
+            for (let i = 0; i < area1.getBall; i++) {
+                let chkData = rand(area1.startBall, area1.endBall);  //產生第一區範圍隨機值
+                //檢查值是否有重複
+                for (let j = 0; j < i; j++) {
+                    if (Ball[j] == chkData) {
+                        i--;
+                        append = false;
+                        break;
+                    }
+                }
+                if (append) {
+                    chkData = conv(chkData);
+                    Ball.push(chkData);
+                    area1.result = area1.result + chkData + "、";
+
+                }
+                append = true;
+            }
+            resultLength = (3 * area1.getBall) - 1;
+            area1.result = area1.result.substr(0, resultLength);
+            area2.result = rand(area2.startBall, area2.endBall); //產生第二區範圍隨機值
+            area2.result = conv(area2.result);
+            ctrlCss.style.display = 'block';  //顯示電腦選號結果
+            let htmlTag = "<h1>威力彩電腦選號產生結果</h1><h2>第一區號碼：" + area1.result + "</h2><h2>第二區號碼：" + area2.result + "</h2>";  //將結果排版
+            ctrlCss.innerHTML = htmlTag;  //將內容插入至id=show元件中
+        }
+    </script>
+</body>
+
+</html>

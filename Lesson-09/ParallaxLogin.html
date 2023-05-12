@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParallaxLogin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      position: relative;
+      top: 0;
+      left: 0;
+      background-color: #d9edfd;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .layer-1 {
+      animation: parallax_fg linear 20s infinite both;
+      background: url(lay8.svg) 0 100% repeat-x;
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 975px;
+    }
+
+    .layer-4 {
+      animation: parallax_fg linear 75s infinite both;
+      background: url(4.png) 0 100% repeat-x;
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 468px;
+    }
+
+    .layer-5 {
+      animation: parallax_fg linear 95s infinite both;
+      background: url(5.png) 0 100% repeat-x;
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 311px;
+    }
+
+    .layer-6 {
+      animation: parallax_fg linear 120s infinite both;
+      background: url(6.png) 0 100% repeat-x;
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 222px;
+    }
+
+    .sportsCar-1,
+    .sportsCar-2 {
+      background: url("tecnica.png") 0 100% no-repeat;
+      z-index: 1;
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 75px;
+      animation: parallax_sportsCar linear 3s infinite both;
+    }
+
+    .sportsCar-2 {
+      animation: parallax_sportsCar linear 1s infinite both;
+    }
+
+    @keyframes parallax_fg {
+      0% {
+        background-position: 2765px 100%;
+      }
+
+      100% {
+        background-position: 550px 100%;
+      }
+    }
+
+    @keyframes parallax_sportsCar {
+      0% {
+        background-position: -300px 100%;
+      }
+
+      100% {
+        background-position: 2000px 100%;
+      }
+    }
+
+    .log-in {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    }
+
+    .log-in h1 {
+      position: absolute;
+      font-size: 10vh;
+      color: #ffcc00;
+      -webkit-text-stroke: 2px black;
+      text-transform: uppercase;
+    }
+
+    .log-in h1::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      color: black;
+      -webkit-text-stroke: 0px black;
+      border-right: 2px solid black;
+      overflow: hidden;
+      animation: animate 5s linear infinite;
+      white-space: nowrap;
+    }
+
+    /* animation to fill text */
+
+    @keyframes animate {
+
+      0%,
+      10%,
+      100% {
+        width: 0;
+      }
+
+      50%,
+      70% {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <div class="log-in">
+      <h1 data-text="LOG IN">LOG IN</h1>
+    </div>
+    <div class="parallax-layer layer-6"></div>
+    <div class="parallax-layer layer-5"></div>
+    <div class="parallax-layer layer-4"></div>
+    <div class="parallax-layer sportsCar-1"></div>
+    <div class="parallax-layer sportsCar-2"></div>
+    <div class="parallax-layer layer-1"></div>
+  </div>
+</body>
+
+</html>

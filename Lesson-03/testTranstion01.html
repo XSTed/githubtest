@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test transition</title>
+    <style type="text/css">
+        .demo {
+            width: 680px;
+            height: 680px;
+            border: 1px solid red;
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .demo div {
+            width: 80px;
+            height: 50px;
+            border: 1px solid blue;
+            margin: 1px;
+            margin-top: 630px;
+            background-color: aqua;
+            /* display: block; */
+        }
+        .demo:hover > div {
+            /*需保留80px空間給div*/
+            margin-top: -600px;
+        }
+        .demo:hover > .timing1 { /* 利用外部時間函數造成距離變化 */
+           transform: scale(1.3);
+        }
+        .demo:hover > .timing2 { /* 利用外部時間函數造成距離變化 */
+           border: 3px;
+        }
+        .demo:hover > .timing3 { /* 利用外部時間函數造成距離變化 */
+           font-size: 36px;
+        }
+        .demo:hover > .timing4 { /* 利用外部時間函數造成距離變化 */
+           font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .demo:hover > .timing5 { /* 利用外部時間函數造成距離變化 */
+           transform: translateX(90px);
+        }
+        .demo:hover > .timing6 { /* 利用外部時間函數造成距離變化 */
+           transform: translateY(10px);
+        }
+
+        /* ---下列為各種 時間速率---*/
+        .timing1 { /* 利用外部時間函數造成距離變化 */
+            transition: all 1s ease 0s;
+        }
+        .timing2 {
+            transition: all 1s ease-in 0s;
+        }
+        .timing3 {
+            transition: all 1s ease-out 0s;
+        }
+        .timing4 {
+            transition: all 1s ease-in-out 0s;
+        }
+        .timing5 {
+            transition: all 1s linear 0s;
+        }
+        .timing6 {
+            transition: all 1s cubic-bezier(0.1, 0.7, 1, 0.1) 0s;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <img src="gotop01.png" class="timing1">
+        <div class="timing2">ease-in</div>
+        <div class="timing3">ease-out</div>
+        <div class="timing4">ease-in-out</div>
+        <div class="timing5">linear</div>
+        <div class="timing6">cubic-bezier</div>
+        <!-- <div class="timing7">No Time</div> -->
+    </div>
+</body>
+</html>

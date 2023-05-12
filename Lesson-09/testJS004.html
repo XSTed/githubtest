@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bgRed {
+            background-color: red;
+        }
+
+        .bgYellow {
+            background-color: yellow;
+        }
+        .bgWhite {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="multipli" border="1" bordercolor="green">
+        <tr>
+            <td>*</td>
+        </tr>
+    </table>
+    <script>
+        var level1 = 9, level2 = 9;
+        var tableTr = document.getElementById("multipli").rows[0];
+        for (let i = 1; i <= level1; i++) {
+            var td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = i;
+            if (i == 5) {
+                td.setAttribute("class", "bgRed");
+            }
+        }
+        for (let i = 1; i <= level1; i++) {
+            var lastRow = document.getElementById("multipli").rows.length;
+            var tableTr = document.getElementById("multipli").insertRow(lastRow);
+            var td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = i;
+            for (let j = 1; j <= level2; j++) {
+                td = tableTr.insertCell(tableTr.cells.length);
+                td.innerHTML = i + "*" + j + "=" + i * j;
+                if (i == 5&&j==5) {
+                    td.setAttribute("class", "bgWhite");
+                } else if (i == 5) {
+                    td.setAttribute("class", "bgYellow");
+                } else if (j == 5) {
+                    td.setAttribute("class", "bgRed");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

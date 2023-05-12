@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test004</title>
+    <style>
+        .row {
+            padding: 4rem;
+            background-color: #F8F8FF;
+            border: 4px black;
+            color: #555555;
+        }
+
+        .card {
+            background-color: #ddf;
+            padding: 30px;
+            margin: 20px;
+            transition: 0.40s;
+        }
+
+        .card:hover {
+            transform: scale(1.15);
+        }
+
+        .container .btn-outline-success {
+            border: 1px solid #777;
+            padding: 0 20px;
+            min-width: 130px;
+            height: 60px;
+            line-height: 60px;
+            margin-right: 10px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- <div class="row">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <a href="https://www.settour.com.tw/act/gfg/america/canada/">
+                            <video controls="controls" autoplay="autoplay" class="d-block w-100" poster="media/video1.jpg" muted><source src="https://www.youtube.com/watch?v=IsDFEdoaCWo" type=video/mp4 />
+                            </video>
+                            </a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>加拿大-Pemberton】如詩如畫的鄉村風光</h5>
+                            <p>美麗湖岸，雪白的圍欄、五彩的樺木林及小巧可愛的農家小屋，在裊裊煙霧的襯托下，如詩如畫的歐洲莊園，充滿著靜謐的情懷，讓人陶醉不己。</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <a href="https://travel.ettoday.net/article/1242053.htm"><img src="images/1680_1020_01.png"
+                                class="d-block w-100" alt="壯觀得讓人想哭！美國大峽谷自由行攻略"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>壯觀得讓人想哭！美國大峽谷自由行攻略</h5>
+                            <p>想在美國西岸體驗經典公路旅行卻毫無頭緒？想自駕開車前往大峽谷卻不知道交通路線怎麼安排？看到這篇指南後你不用再擔心，小編幫你整理了從拉斯維加斯出發自駕前往大峽谷國家公園南緣，且途徑美國西部公路之母「66號國道」的往返交通方式、公路自駕休憩點，以及大峽谷南緣健走一日遊行程安排，讓你新手上路也不怕，看得開心也玩得盡興！
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <a href="https://www.cw.com.tw/article/5094703?template=fashion"><img
+                                src="images/1680_1020_02.jpg" class="d-block w-100" alt="泰姬瑪哈陵，以寂寞的美麗形式，征服了死亡"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>泰姬瑪哈陵，以寂寞的美麗形式，征服了死亡</h5>
+                            <p>對妻子的愛，促使蒙兀兒帝國的第五代皇帝沙賈汗建造了這座天上、人間最美麗的陵墓。但這位老君王被兒子奧朗則部（Aurangzeb）軟禁於距泰姬陵2公里外的紅堡八角樓中。長達8年的時間，沙賈汗日夜在八角樓上日夜遙望泰姬陵，度過餘生。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div> -->
+
+        <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+            integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+            integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+
+
+        <div id="myCarousel" class="carousel slide" data-interval="false">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <video controls autoplay loop muted class="myvid" id="player">
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="carousel-item">
+                    <video controls autoplay class="myvid" id="player2">
+                        <source
+                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="carousel-item">
+                    <video controls autoplay class="myvid" id="player2">
+                        <source
+                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Vorige</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Volgende</span>
+            </a>
+        </div> -->
+
+        <!-- 卡片 -->
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj1">
+                    <img src="images/0001.jpg" class="card-img-top" alt="project_1" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 1</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj2">
+                    <img src="images/0002.jpg" class="card-img-top" alt="project_2" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 2</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj2">
+                    <img src="images/0003.jpg" class="card-img-top" alt="project_2" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 3</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj2">
+                    <img src="images/0004.jpg" class="card-img-top" alt="project_2" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 4</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj2">
+                    <img src="images/0005.jpg" class="card-img-top" alt="project_2" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 5</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card" id="proj2">
+                    <img src="images/0006.jpg" class="card-img-top" alt="project_2" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">アクア 6</h5>
+
+                        <p class="card-text">
+                            佐藤和真在某次意外中死亡。負責管理日本意外死亡青少年的水之女神阿克婭表示，某個異世界正受到魔王軍肆虐、人口大量減少，假如和真願意轉生到該世界，他便可以受到保留記憶、並帶走一樣額外的神裝或技能的優待。與此同時，阿克婭不斷嘲笑和真在原世界的頹廢與丟臉的死法。於是和真受不了阿克婭的冷嘲熱諷，在轉生前選擇不帶走任何神裝而帶走阿克婭——負責接替阿克婭的女神表示，唯有打倒魔王，才會讓阿克婭回到原本的職位。
+                        </p>
+
+                        <a href="#" class="btn btn-outline-success">Click to see</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>輕設計工作室Light Design Studio</title>
+  <link href="website0301.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+  <link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
+  <script type="text/javascript">
+    function effectFadeTo(targetElement, duration, from, to) {
+      $(targetElement).fadeTo(duration / 2, from);
+      $(targetElement).fadeTo(duration / 2, to);
+    }
+$(function(){
+    $("#banner").mouseenter(function () {
+      $("#banner").fadeTo(1000, 0.3);
+    });
+    $("#banner").mouseout(function () {
+      $("#banner").fadeTo(1000, 1);
+    });
+
+    $("#contentMain a").lightBox({maxHeight:$(window).height()*0.9,maxWidth:$(window).width()*0.9});
+  });
+
+  </script>
+</head>
+
+<body>
+  <div id="header"><a href="index_new.html"><img src="images3/logo.gif" width="182" height="60"
+        class="headerLogo transition" /></a><span class="headerCopy">Best: 1024*768<br />
+      Copyright © Light Design Studio All rights reserved.</span></div>
+  <div id="content">
+    <div id="contentL"><a href="about.html"><img src="images3/menu1.jpg" width="242" height="83"
+          class="noborder transition" /></a><a href="works.html"><img src="images3/menu2.jpg" width="242" height="84"
+          class="noborder transition" /></a><a
+        href="mailto://service@flag.com.tw?subject=&quot;Design Case!!&quot;"><img src="images3/menu3.jpg" width="242"
+          height="93" class="noborder transition" /></a>
+      <div id="listNew">
+        <p>07-01<br />
+          <a href="http://www.flag.com.tw" target="_blank">輕設計工作室參與的新書 「正確學會 Dreamweaver CS6 的 16 堂課」 出版了，詳細請連此</a>
+        </p>
+        <p>05-20<br />
+          輕設計獨家設計手提袋新上架，請洽各網路商店</p>
+        <p>05-01<br />
+          輕設計個性 T 恤上架，請洽各網</p>
+      </div>
+    </div>
+    <div id="contentR"><img src="images3/page_photo.jpg" width="487" height="186" class="topPhoto transition" />
+      <div id="contentMain">
+        <div class="photolist">
+            <p><a href="LDn/001.jpg" title="BlueSky"><img src="./LDn/001s.jpg" id="card1" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>最後の海 新世界編</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/002.jpg" title="三角守護者"><img src="./LDn/002s.jpg" id="card2" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>魚人島篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/003.jpg" title="生活"><img src="./LDn/003s.jpg" id="card3" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>龐克哈薩特篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/004.jpg" title="忙碌"><img src="./LDn/004s.jpg" id="card4" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>和之國篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/005.jpg" title="擺在眼前的鮮美"><img src="./LDn/005s.jpg" id="card5" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>多雷斯羅薩篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/006.jpg" title="凝望"><img src="./LDn/006s.jpg" id="card6" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>佐烏篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/007.jpg" title="禪的奧義"><img src="./LDn/007s.jpg" id="card7" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>圓蛋糕島篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/008.jpg" title="花的姿態"><img src="./LDn/008s.jpg" id="card8" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>世界會議篇</p>
+          </div>
+          <div class="photolist">
+            <p><a href="LDn/009.jpg" title="莊嚴"> <img src="./LDn/009s.jpg" id="card9" onmouseover="effectFadeTo(this, 1000, 0.3, 1)"></a></p>
+            <p>人魚公主</p>
+          </div>
+          <br clear="left">
+      </div>
+      <div id="wallpaper">
+        <p>桌布下載：<a href="LDn/001.jpg" target="_blank">800*600<a >&nbsp&nbsp&nbsp&nbsp<a href="LDn/wallpaper.zip">1024*768<a ></p>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div align="center"><button onclick="changeCard();">Go! | Stop</button></div>
+</div>
+<script>
+    const cardGroup = ['card1', 'card2', 'card3', 'card6', 'card9', 'card8', 'card7', 'card4']
+
+    var currentCard = 0;
+
+    function cardGame() {
+        document.getElementById(cardGroup[currentCard]).style.opacity = 0.5;
+        if (currentCard === 0) {
+            document.getElementById(cardGroup[cardGroup.length - 1]).style.opacity = 1;
+        } else {
+            document.getElementById(cardGroup[currentCard - 1]).style.opacity = 1;
+        }
+        currentCard = (currentCard + 1) % cardGroup.length;
+    }
+
+    function changeCard() {
+        setInterval(cardGame, 100);
+    }
+
+    function stopCard() {
+        clearInterval();
+    }
+</script>
+</body>
+
+</html>

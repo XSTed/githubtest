@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test002</title>
+    <script src="comlib.js"></script>
+    <style>
+        div {
+            padding: 5px;
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var name = "郭軒宏";
+        var seat = 08;
+        var age = 31;
+        var tall = 168;
+        var student = false;
+        var randNum = rand(1, 100);
+        var interest = "Tetris Battle，曾經幹掉世界第一";
+        var want = "找到工作";
+        var score = [100, 100, 100];
+        var mobile = {
+            tel: "0912345678",
+            os: "android",
+            brand: "SONY",
+            size: "6.5inches"
+        };
+    </script>
+    <table border="1">
+        <tr>
+            <td>姓名</td>
+            <td>
+                <script>document.write(name);</script>
+            </td>
+            <td>
+                <script>document.write(typeof (name));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>座號</td>
+            <td id="seatRand">
+
+            </td>
+            <td>
+                <script>document.write(typeof (seatRand(seatNumbers)));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>年齡</td>
+            <td>
+                <input type="text" id="num1" placeholder="請輸入月份">
+                <p id="result"></p>
+                <button onclick="calculate()">計算</button>
+            </td>
+            <td>
+                <script>document.write(typeof (age));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>目前年齡
+                <script>document.write(age);</script>又6個月，計27個月之後為
+            </td>
+            <td>
+                51歲，又9個月
+            </td>
+            <td>
+                <script>document.write(typeof (age));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>身高</td>
+            <td>
+                <script>document.write(tall);</script>
+            </td>
+            <td>
+                <script>document.write(typeof (tall));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>是否在學</td>
+            <td>
+                <script>document.write(student);</script>
+            </td>
+            <td>
+                <script>document.write(typeof (student));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>興趣</td>
+            <td bgcolor="aqua">
+                <script>document.write(interest);</script>
+            </td>
+            <td>
+                <script>document.write(typeof (interest));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>希望在JS課得到什麼</td>
+            <td>
+                <script>document.write(want);</script>
+            </td>
+            <td>
+                <script>document.write(typeof (want));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>成績</td>
+            <td>
+                <table border="1" bordercolor="green">
+                    <tr>
+                        <td>JS</td>
+                        <td>CSS</td>
+                        <td>HTML</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <script>document.write(score[0]);</script>
+                        </td>
+                        <td>
+                            <script>document.write(score[1]);</script>
+                        </td>
+                        <td>
+                            <script>document.write(score[2]);</script>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <script>document.write(typeof (score));</script>
+            </td>
+        </tr>
+
+        <tr>
+            <td>使用手機規格</td>
+            <td>
+                <table border="1" bordercolor="blue">
+                    <tr>
+                        <td>電話</td>
+                        <td>系統</td>
+                        <td>品牌</td>
+                        <td>大小</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <script>document.write(mobile.tel);</script>
+                        </td>
+                        <td>
+                            <script>document.write(mobile.os);</script>
+                        </td>
+                        <td>
+                            <script>document.write(mobile.brand);</script>
+                        </td>
+                        <td>
+                            <script>document.write(mobile.size);</script>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <script>document.write(typeof (score));</script>
+            </td>
+        </tr>
+    </table>
+
+<div id="seat-chart">
+
+</div>
+
+    <script>
+        // 產生亂數座號
+        const seatNumbers = rand(1, 30);
+
+        function calculate() {
+            var month = parseInt(document.getElementById("num1").value);
+            var newMonth;
+            var newOld;
+            var randNum = rand(1, 50);
+
+            newOld = Math.floor(randNum + (month / 12));
+            newMonth = month % 12;
+
+            document.getElementById("result").innerHTML = newOld.toString() + "歲" + newMonth.toString() + "月";
+        }
+/*************************************************************/
+        // 產生亂數座號
+        const seatNum = rand(1, 30);
+
+        //計算座位位置
+        let row = Math.floor((seatNum - 1) / 8) + 1;
+        let col = (seatNum - 1) % 8 + 1;
+        if (seatNum > 17) {
+            row = Math.floor(seatNum / 8) + 1;
+            col = (seatNum % 8) + 1;
+        }
+
+        //輸出結果
+        document.querySelector("#seatRand").textContent = `${seatNum}號，座${row}排第${col}個位子`;
+/*************************************************************/
+const seatChart = document.getElementById("seat-chart");
+const seatNums = [];
+for (let i = 0; i<30; i++) {
+    seatNums.push(i);
+}
+
+shuffle(seatNums);
+
+let curRow = 1;
+let curCol = 1;
+for (let i = 0; i < seatNums.length; i++) {
+    if(seatNums[i]==17) {
+        curCol++;
+    }
+    const st = document.createElement("div");
+    const stNum = document.createElement("div");
+    const stRow = document.createElement("div");
+    const stCol = document.createElement("div");
+    stNum.textContent = seatNums[i];
+    stRow.textContent = curRow;
+    stCol.textContent = curCol;
+    st.appendChild(stNum);
+    st.appendChild(stRow);
+    st.appendChild(stCol);
+    seatChart.appendChild(st);
+    if (curCol == 8 ) {
+        curRow++;
+        curCol = 1;
+    } else {
+        curCol++;
+    }
+}
+
+function shuffle(array) {
+    for(let i = array.length-1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i+1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+    </script>
+
+</body>
+
+</html>

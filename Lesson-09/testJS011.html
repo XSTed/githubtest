@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BTN05 Demo</title>
+  <style>
+    /* Define styles for the window */
+    .window {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn-open">Open Window</button>
+
+  <script>
+    // Define the window component
+    class WindowComponent {
+      constructor(title, message) {
+        this.title = title;
+        this.message = message;
+      }
+
+      render() {
+        // Create the window element
+        const windowEl = document.createElement('div');
+        windowEl.className = 'window';
+
+        // Add title
+        const titleEl = document.createElement('h2');
+        titleEl.textContent = this.title;
+        windowEl.appendChild(titleEl);
+
+        // Add message
+        const messageEl = document.createElement('p');
+        messageEl.textContent = this.message;
+        windowEl.appendChild(messageEl);
+
+        // Add close button
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.addEventListener('click', () => {
+          windowEl.remove();
+        });
+        windowEl.appendChild(closeButton);
+
+        // Add window to the DOM
+        document.body.appendChild(windowEl);
+      }
+    }
+
+    // Add event listener to the button
+    const openButton = document.getElementById('btn-open');
+    openButton.addEventListener('click', () => {
+      // Create a new window component with a title and message
+      const myWindow = new WindowComponent('My Window', 'Hello, world!');
+      myWindow.render();
+    });
+  </script>
+</body>
+</html>

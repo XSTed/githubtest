@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>權重</title>
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+        * {
+            color: red;
+            /* 0-0-0-0 */
+
+        }
+
+        .container {
+            background-color: aqua;
+            /* 0-0-1-0 */
+        }
+
+        div {
+            font-size: 22px;
+            font-weight: bolder;
+            width: 100px;
+            text-align: center;
+            background-color: hotpink;
+            height: 50px;
+            margin-bottom: 30px;
+            color: greenyellow;
+            /* element 0-0-0-1 */
+        }
+
+        .item {
+            color:cadetblue;
+            /* 0-0-1-0 */
+        }
+
+        #colorset {
+            color:crimson;
+            /* 0-1-0-0 */
+        }
+
+        div.item{
+            color: #fff;
+            /* 0-0-1-1 */
+        }
+
+        #colorset.item{
+            color: black;
+            font-size: 36px;
+        }
+        .item span  { /*span會繼承樣式但不會繼承權重，內層會繼承樣式，權重不會*/
+            color: rgb(124, 235, 255);
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <p>文字0</p>
+        <div>文字1</div>
+        <div class="item">文字2</div>
+        <div id="colorset" class="item">文字3</div>
+        <div id="colorset" class="item" style="color: gold;">文字4</div>
+        <div id="colorset" class="item"><span>文字3</span></div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Seat Generator</title>
+  <style>
+    .seat {
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      text-align: center;
+      display: inline-block;
+      margin: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="seating-chart"></div>
+
+  <script>
+    function generateSeatingChart() {
+      const numStudents = 30;
+      const rows = 4;
+      const cols = 8;
+
+      // Generate an array of seat numbers from 1 to numStudents
+      const seatNumbers = Array.from({length: numStudents}, (_, i) => i + 1);
+
+      // Shuffle the seat numbers array
+      for (let i = seatNumbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [seatNumbers[i], seatNumbers[j]] = [seatNumbers[j], seatNumbers[i]];
+      }
+
+      // Find the seat number for the student
+      const studentSeatNumber = Math.floor(Math.random() * numStudents) + 1;
+
+      // Find the row and column for the student's seat
+      const studentRow = Math.floor((studentSeatNumber - 1) / cols);
+      const studentCol = (studentSeatNumber - 1) % cols;
+
+      // Create the seating chart HTML
+      let seatingChartHtml = '';
+      for (let i = 0; i < rows; i++) {
+        seatingChartHtml += '<div class="row">';
+        for (let j = 0; j < cols; j++) {
+          const seatNumber = seatNumbers[i * cols + j];
+          const className = (i === studentRow && j === studentCol) ? 'seat highlight' : 'seat';
+          seatingChartHtml += `<div class="${className}"> ${seatNumber} </div>`;
+        }
+        seatingChartHtml += '</div>';
+      }
+
+      // Add the seating chart HTML to the page
+      const seatingChartContainer = document.getElementById('seating-chart');
+      seatingChartContainer.innerHTML = seatingChartHtml;
+
+      // Print the student's seat information
+      console.log(`學生座號${studentSeatNumber}，教室位子第${studentRow + 1}排第${studentCol + 1}位`);
+    }
+
+    // Call the generateSeatingChart function when the page loads
+    window.onload = generateSeatingChart;
+  </script>
+
+</body>
+</html>

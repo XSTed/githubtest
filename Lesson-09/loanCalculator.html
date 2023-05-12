@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Loan Calculator</title>
+
+    <style>
+        body {
+            background-color: yellow;
+            font-family: 'Trebuchet MS';
+        }
+
+        h1 {
+            font-size: 35px;
+        }
+
+        h1 {
+            font-size: 21px;
+            margin-top: 20px;
+        }
+
+        .calculator {
+            width: 400px;
+            height: 450px;
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            padding: 20px 0px 0px 100px;
+            border-radius: 50px;
+            color: white;
+        }
+
+        input {
+            padding: 7px;
+            width: 70%;
+            margin-top: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1>計算機</h1>
+        <!-- Calling Calculate function defined in app.js -->
+        <p>您付的錢 (₹) :</p>
+        <p> <input id="amount" type="number" onchange="Calculate()"></p>
+
+
+        <p>玩的次數 :</p>
+        <p> <input id="playNum" type="number" onchange="Calculate()" readonly></p>
+
+        <p>中獎金額 :</p>
+        <p> <input id="prizeNum" type="number" onchange="Calculate()" readonly></p>
+
+        <h2 id="total"></h2>
+    </div>
+
+    <script>
+        // Extracting value in the amount 
+        const amount = document.querySelector("#amount").value;
+
+        const playNum = document.querySelector("#playNum").value;
+ 
+        const prizeNum = document.querySelector("#prizeNum").value;
+        if (amount < 2) {
+            return;
+        }
+        if (playNum < 0) {
+            return;
+        }
+        function Calculate() {
+
+            // Calculating total payment
+            const total = playNum * (-2) + prizeNum + amount;
+
+            document.querySelector("#total")
+                .innerHTML = "總金額 : (₹)" + total;
+        }
+    </script>
+</body>
+
+</html>

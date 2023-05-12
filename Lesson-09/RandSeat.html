@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Random Seat Generator</title>
+    <script src="comlib.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <style>
+        .studentTitle h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .seat {
+            width: 90px;
+            height: 90px;
+            border: 1px solid rgb(189, 189, 189);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-size: 18px;
+            box-shadow: 3px 3px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .highlight {
+            background-color: lightyellow;
+        }
+
+        .ui-state-hover {
+            background: rgb(225, 240, 255);
+        }
+
+        .ui-state-active {
+            background: rgb(225, 255, 240);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="seating-chart"></div>
+
+    <script>
+        function generateSeatingChart() {
+            const numStudents = 30;
+            const rows = 4;
+            const cols = 8;
+
+            // Generate an array of seat numbers from 1 to numStudents
+            const seatNumbers = Array.from({ length: numStudents }, (_, i) => i + 1);
+
+            // Shuffle the seat numbers array
+            for (let i = seatNumbers.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [seatNumbers[i], seatNumbers[j]] = [seatNumbers[j], seatNumbers[i]];
+            }
+
+            let randSt = rand(1, 30);
+
+            // Create the seating chart HTML
+            let seatingChartHtml = '';
+            for (let i = 0; i < rows; i++) {
+                seatingChartHtml += '<div class="row">';
+                for (let j = 0; j < cols; j++) {
+                    let className = 'seat';
+                    let seatNumber = seatNumbers[i * cols + j];
+                    //create random highlight 
+                    if (randSt == seatNumber) {
+                        className = 'seat highlight';
+                    }else if (i === 2 && j === 0) {
+                        // This is the seat at row 3 and column 1
+                        seatNumber = seatNumbers.splice(1,0,'');
+                        className = 'seat empty';
+                    } 
+                    seatingChartHtml += `<div class="${className}"> ${seatNumber} </div>`;
+                }
+                seatingChartHtml += '</div>';
+            }
+
+
+
+            // Add the seating chart HTML to the page
+            const seatingChartContainer = document.getElementById('seating-chart');
+            seatingChartContainer.innerHTML = seatingChartHtml;
+
+
+            jQuery.fn.swap = function (b) {
+                // method from: http://blog.pengoworks.com/index.cfm/2008/9/24/A-quick-and-dirty-swap-method-for-jQuery
+                b = jQuery(b)[0];
+                var a = this[0];
+                var t = a.parentNode.insertBefore(document.createTextNode(''), a);
+                b.parentNode.insertBefore(a, b);
+                t.parentNode.insertBefore(b, t);
+                t.parentNode.removeChild(t);
+                return this;
+            };
+
+
+            $(".seat").draggable({ revert: true, helper: "clone" });
+
+            $(".seat").droppable({
+                accept: ".seat",
+                activeClass: "ui-state-hover",
+                hoverClass: "ui-state-active",
+                drop: function (event, ui) {
+
+                    var draggable = ui.draggable, droppable = $(this),
+                        dragPos = draggable.position(), dropPos = droppable.position();
+
+                    draggable.css({
+                        left: dropPos.left + 'px',
+                        top: dropPos.top + 'px'
+                    });
+
+                    droppable.css({
+                        left: dragPos.left + 'px',
+                        top: dragPos.top + 'px'
+                    });
+                    draggable.swap(droppable);
+                }
+            });
+        }
+
+        // Call the generateSeatingChart function when the page loads
+        window.onload = generateSeatingChart;
+
+
+        
+    </script>
+
+</body>
+
+</html>

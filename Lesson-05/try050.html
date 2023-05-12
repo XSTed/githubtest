@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GG</title>
+    <script language="javascript" src="jquery.min.js"></script>
+    <style type="text/css">
+        @keyframes moveFromBottomToTop {
+            from {
+                bottom: 0;
+            }
+
+            to {
+                top: 0;
+            }
+        }
+
+        .animate-linear {
+            animation: moveFromBottomToTop 1s linear;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#animate-image").addClass("animate-linear");
+        });</script>
+</head>
+
+<body>
+    <img id="animate-image" src="gotop01.png" />
+</body>
+
+</html>

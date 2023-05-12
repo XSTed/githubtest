@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="comlib.js"></script>
+</head>
+
+<body>
+
+    <script>
+        // 產生今彩539號碼
+        function generate539Numbers() {
+            let numbers = [];
+            while (numbers.length < 5) {
+                let num = rand(1, 39);
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+            return numbers.sort(function (a, b) {
+                return b - a;
+            });
+        }
+    
+        // 今彩539號碼
+        let lotteryNumbers = generate539Numbers();
+    
+        // 將陣列從小到大排序
+        lotteryNumbers.sort(function (a, b) {
+            return a - b;
+        });
+    
+    </script>
+    <h3>金彩539</h3>
+    <form id="form1" name="form1" method="post">
+        <p>第一組號碼</p>
+        <p>
+            號碼1：<input type="number" name="startBall01" id="startBall01" value="">
+            號碼2：<input type="number" name="startBall02" id="startBall02" value="">
+            號碼3：<input type="number" name="startBall03" id="startBall03" value="">
+            號碼4：<input type="number" name="startBall04" id="startBall04" value="">
+            號碼5：<input type="number" name="startBall05" id="startBall05" value="">
+
+        </p>
+        <input type="button" name="button" id="button" value="確定" onclick="choiceNumber();">
+    </form>
+    <div id="show" name="show">
+        <h1>今彩539選號產生結果</h1>
+        <h2>您的號碼：</h2>
+        <h2>本次獎項號碼：</h2>
+    </div>
+
+   
+    <script>
+       
+        // Sort the values in ascending order
+        area1.sort(function(a, b){return a-b});
+        var ctrlCss = document.getElementById("show");
+        ctrlCss.style.display = 'none';        //先隱藏結果樣板
+        function choiceNumber() {
+            //從表單取回被修改的值
+            let area1 = [startBall01,startBall02,startBall03,startBall04,startBall05];
+            area1.startBall01 = document.getElementById("startBall01").value;
+            area1.startBall02 = document.getElementById("startBall02").value;
+            area1.startBall03 = document.getElementById("startBall03").value;
+            area1.startBall04 = document.getElementById("startBall04").value;
+            area1.startBall05 = document.getElementById("startBall05").value;
+            
+        // 判斷是否中獎
+        let matched = 0;
+        for (let i = 0; i < area1.length; i++) {
+            if (lotteryNumbers.includes(area1[i])) {
+                matched++;
+            }
+        }
+
+        function getPrice(matched){
+    if (matched === 5) {
+        return "恭喜您中頭獎！";
+    } else if (matched === 4) {
+        return "恭喜您中貳獎！";
+    } else if (matched === 3) {
+        return "恭喜您中參獎！";
+    } else {
+        return "很抱歉，您沒有中獎。"
+    }
+} 
+
+
+// Concatenate the sorted values into htmlTag
+let htmlTag = "<h1>今彩539選號產生結果</h1>";
+htmlTag += "<h2>您的號碼：" + area1.join(",")+ "</h2>";
+htmlTag += "<h2>本次獎項號碼：" +lotteryNumbers.join('、')+"</h2>";
+htmlTag += "<h2>中了 " + matched + " 個號碼。</h2>";
+htmlTag += "<h2>"+getPrice(matched)+"</h2>";
+ctrlCss.innerHTML = htmlTag;
+ctrlCss.style.display = 'block';
+}
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tryLG</title>
+
+    <link rel="stylesheet" href="lightgallery01.css">
+    <script src="jquery.min.js"></script>
+    <script src="js/lightgallery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#my-gallery').lightGallery();
+        });
+
+        $(document).ready(function () {
+            $('#my-gallery').lightGallery({
+                selector: '.gallery-item',
+                mode: 'lg-fade',
+                download: true,
+                // add more settings here
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="my-gallery">
+        <a href="LDn/001.jpg">
+            <img src="LDn/001s.jpg">
+        </a>
+        <a href="LDn/002.jpg">
+            <img src="LDn/002s.jpg">
+        </a>
+        <!-- add more images here -->
+    </div>
+</body>
+
+</html>

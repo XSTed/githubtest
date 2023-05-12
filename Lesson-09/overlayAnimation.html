@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overlayAnimation</title>
+    <style>
+        .animation-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+        .img00 {
+            position: absolute;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 80%;
+            z-index: 99999999;
+        }
+
+        .animated-image {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            top: 80%;
+            left: 80%;
+            transform: translateY(50%) rotate(0deg);
+            animation: anime_1 1s ease-in-out infinite;
+        }
+
+        @keyframes anime_1 {
+            0% {
+                opacity: 0.2;
+            }
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                left: calc(50% + var(--random-left));
+                top: calc(50% + var(--random-Top));
+                opacity: 0;
+                transform: translateX(-50%)
+            }
+        }
+
+        .animated-element {
+            animation: anime_1 1s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animation-container">
+    </div>
+    <img src="gotop01.png" class="img00">
+
+    <script>
+        let intervalId;
+        const animationContainer = document.querySelector('.animation-container');
+        const animatedImage = document.createElement('img');
+        function randomizeAnimation() {
+        const animatedImage = document.createElement('img');
+        animatedImage.src = "gotop01.png";
+        animatedImage.classList.add('animated-image');
+  
+        // Remove existing images
+        animationContainer.innerHTML = '';
+  
+        // Create new images
+        for (let i = 0; i < 20; i++) {
+            const newImage = animatedImage.cloneNode(true);
+            const randomLeft = Math.floor(Math.random() * 101) - 50;
+            const randomTop = Math.floor(Math.random() * 101) - 50;
+
+            newImage.style.setProperty('--random-left', `${randomLeft}%`);
+            newImage.style.setProperty('--random-Top', `${randomTop}%`);
+            animationContainer.appendChild(newImage);
+        }
+        }
+            clearInterval(intervalId);
+            intervalId = setInterval(randomizeAnimation, 1000);
+    </script>
+</body>
+
+</html>

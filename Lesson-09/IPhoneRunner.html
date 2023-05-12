@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPhoneRunner</title>
+    <link rel="stylesheet" href="iphoneRunner.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div id="iphone" class=" d-flex align-items-center p-2">
+            <div class="right-button"></div>
+            <div class="left-top-button"></div>
+            <div class="left-middle-button"></div>
+            <div class="left-bottom-button"></div>
+            <div class="top-line"></div>
+            <div class="top-bullet"></div>
+            <div class="screen rounded-1">
+                <section class="head-top row p-0 m-0 d-flex align-items-center">
+                    <div class="left-side col-4 d-flex">
+                        <i class="signal bi bi-reception-4"></i>
+                        <i class="wifi bi bi-wifi"></i>
+                    </div>
+                    <div class="clock col-4 d-flex justify-content-center"></div>
+                    <div class="right-side col-4 d-flex justify-content-end">
+                        <i class="bi bi-alarm-fill"></i>
+                        <span class="percent">50%</span>
+                        <i class="battery bi bi-battery-half"></i>
+                    </div>
+                </section>
+
+                <!-- >>>> main &nbsp;-->
+                <div id="main" class="d-flex flex-wrap align-items-start justify-content-center p-0">
+                    <section class="watch row d-flex col-12 align-items-end">
+                        <h2 id="minute" class="col-4">00:</h2>
+                        <h2 id="second" class="col-4">00:</h2>
+                        <h2 id="millisecond" class="col-4">00</h2>
+                    </section>
+                    <div id="buttons" class="row col-12">
+                        <span id="start" class="btn col-3 d-flex justify-content-center align-items-center"
+                            onclick="start(this)" data-active="off">Start</span>
+                        <span id="pause" class="btn col-3 d-flex justify-content-center align-items-center"
+                            onclick="pause(this)">Pause</span>
+                        <span id="reset" class="btn col-3 d-flex justify-content-center align-items-center"
+                            onclick="reset(this)">Reset</span>
+                        <span id="lap" class="btn col-3 d-flex justify-content-center align-items-center"
+                            onclick="lap()">Lap</span>
+                    </div>
+                    <section class="lap-list">
+                        <ol></ol>
+                    </section>
+                </div>
+                <div class="head-bottom d-flex row  p-0 m-0">
+                    <span class="col-3 d-flex flex-wrap align-items-center justify-content-center">
+                        <section>
+                            <i class="bi bi-globe text-secondary"></i>
+                        </section>
+                        <span class="text-secondary">World Clock</span>
+                    </span>
+                    <span class="col-3 d-flex flex-wrap align-items-center justify-content-center">
+                        <section>
+                            <i class="bi bi-clock-fill col-12 text-secondary"></i>
+                        </section>
+                        <span class="col-12 text-secondary">Alarm</span>
+                    </span>
+                    <span class="col-3 d-flex flex-wrap align-items-center justify-content-center">
+                        <section>
+                            <i class="bi bi-stopwatch-fill text-warning"></i>
+                        </section>
+                        <span class="text-warning">StopWatch</span>
+                    </span>
+                    <span class="col-3 d-flex flex-wrap align-items-center justify-content-center">
+                        <section>
+                            <i class="bi bi-hourglass-bottom text-secondary"></i>
+                        </section>
+                        <span class="col-12 text-secondary">Timer</span>
+                    </span>
+                </div>
+            </div>
+            <div class="bottom-button"></div>
+        </div>
+    </div>
+    <script>
+        setInterval(h, 1000);
+
+        function h() {
+            const date = new Date();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const clockClass = document.querySelector('.clock');
+            const meridian = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours > 12 ? hours - 12 : hours;
+            const displayMinutes = conv(minutes);
+            clockClass.innerHTML = `${displayHours}:${displayMinutes}&nbsp;${meridian}`;
+        }
+
+        const millisecond = document.getElementById('millisecond');
+        const second = document.getElementById('second');
+        const minute = document.getElementById('minute');
+        const lapList = document.querySelector('.lap-list');
+        let i = 1;
+        let ms = 0;
+        let s = 0;
+        let m = 0;
+        let interval;
+
+        function start(self) {
+            if (self.dataset.active === 'off') {
+                interval = setInterval(stopwatch, 10);
+                self.dataset.active = 'on';
+            }
+        }
+
+        function pause(self) {
+            self.previousElementSibling.dataset.active = 'off';
+            clearInterval(interval);
+        }
+
+        function reset(self) {
+            self.previousElementSibling.previousElementSibling.dataset.active = 'off';
+            ms = 0;
+            s = 0;
+            m = 0;
+            millisecond.textContent = '00';
+            second.textContent = '00:';
+            minute.textContent = '00:';
+            lapList.innerHTML = '';
+            clearInterval(interval);
+            i = 1;
+        }
+
+        function lap() {
+            const lapTime = `${minute.textContent}&nbsp;${second.textContent}&nbsp;${millisecond.textContent}&nbsp;`;
+            const lapItem = `<p>${i}.&nbsp;&nbsp;&nbsp;${lapTime}</p>`;
+            lapList.insertAdjacentHTML('beforeend', lapItem);
+            i++;
+        }
+
+        function stopwatch() {
+            ms++;
+            if (ms > 99) {
+                ms = 0;
+                s++;
+                if (s > 59) {
+                    s = 0;
+                    m++;
+                    minute.textContent = conv(m) + ':';
+                }
+                second.textContent = conv(s) + ':';
+            }
+            millisecond.textContent = conv(ms);
+        }
+
+        function conv(variable) {
+            return variable < 10 ? '0' + variable : variable;
+        }
+
+    </script>
+</body>
+
+</html>
+<!-- 
+Here are the changes made to optimize the code:
+
+Used const and let instead of var to declare variables.
+Changed document.getElementsByClassName('clock')[0] to document.querySelector('.clock').
+Simplified the condition for setting the AM or PM meridian.
+Simplified the code for formatting the time display.
+Changed getAttribute('data-') to dataset.active.
+Replaced .innerHTML with .textContent where appropriate.
+Used insertAdjacentHTML instead of creating a new p element and appending it.
+Simplified the function conv.
+ -->

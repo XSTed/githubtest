@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可愛網頁設計Cute Design Studio</title>
+  <link href="website0302.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+
+  <style>
+    #draggable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    function animation() {
+      var pic01 = $("#pic01");
+      pic01.animate({ height: '300px', opacity: '0.4' }, "slow").animate({ width: '300px', opacity: '0.8' }, "slow").animate({ height: '100px', opacity: '0.4' }, "slow").animate({ width: '100px', opacity: '0.8' }, "slow", animation);
+    }
+
+
+    $(function () {
+      $("#imgid01").click(function () {
+        getState = $("#imgid01").attr("data");
+        if (getState == "1") {
+          animation();
+          // $( "#draggable" ).draggable();
+          $("#imgid01").attr("data", "2");
+        } else {
+          // $("#people1").slideDown(1000, function () { });
+          $("#imgid01").attr("data", "1");
+        }
+      });
+
+
+
+      // var cols = "#ffcc00,#eeeeee,#3b5998".split(",");
+      // var cPos = 0;
+
+      // function swapC() {
+      //   $('h2').animate({ backgroundColor: cols[cPos] }, 500);
+      //   cPos++;
+      //   if (cPos == cols.length) {
+      //     cPos = 0;
+      //   }
+      //   window.setTimeout(function () { swapC(); }, 500);
+      // }
+
+      // $(document).ready(function () {
+      //   swapC();
+      // });
+
+    });
+
+
+
+    // $(document).ready(function () {
+    //   $('td').draggable();
+    // });
+  </script>
+</head>
+
+<body>
+  <div id="header"><a href="index.html"><img src="images1/main_logo.jpg" alt="logo" width="167" height="101"
+        class="headerLogo noborder transition" /></a><span class="headerCopy">Copyright © Cute Design Studio All rights
+      reserved.</span><a href="mailto:service@flag.com.tw"><img src="images1/email.png" alt="聯絡我們" width="150"
+        height="51" class="email" /></a></div>
+  <div id="content">
+    <div id="contentL">
+      <div id="sidemenu"><a href="about.html"><img src="images1/about_btn.png" alt="關於我們" width="162" height="144"
+            class="noborder transition" /></a><a href="works.html"><img src="images1/works_btn.png" alt="作品展示"
+            width="162" height="144" class="noborder transition" /></a></div>
+      <div id="listNew">
+        <p><span class="date">07-01</span><br />
+          <a href="http://www.flag.com.tw" target="_blank">Cute Design 工作室參與的新書 「正確學會 Dreamweaver CS6 的 16 堂課」
+            出版了，詳細請連此</a>
+        </p>
+        <p><span class="date">05-20</span><br />
+          <a href="works.html#bags">Cute Bags 獨家設計手提袋新上架，請洽各網路商店</a>
+        </p>
+        <p><span class="date">05-01</span><br />
+          <a href="works.html#tshirts">Cute Design 個性 T 恤上架，請洽各網路商店</a>
+        </p>
+      </div>
+    </div>
+    <div id="contentR"> <img src="images1/titles_works.jpg" width="500" height="242" class="topPhoto" />
+      <div id="contentMain">
+        <!-- 點擊這裡動畫 -->
+        <img src="images/about1.gif" alt="攝影指導陣容" width="515" id="imgid01" data="1" />
+        <div id="people1">
+          <table>
+            <tr>
+              <td><img src="images/headpic1.jpg" id="pic01" /></td><!-- id="draggable" class="ui-widget-content"  -->
+              <td>
+                <h2>Ray</h2>
+                <p>知名攝影協會會長，作品散見國際知名雜誌。<br />
+                  洞察細微的觀察角度以及獨特明快的取景風格，一生能有幾次機會跟隨如此的大師級人物學習攝影？</p>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="images/headpic2.jpg" id="pic02" /></td>
+              <td>
+                <h2>Kuma</h2>
+                <p>來自北海道的攝影大師，足跡遍及日本全島，閱歷及攝影經驗之豐富，絕對能帶給您嶄新的新視野。</p>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="images/headpic3.jpg" id="pic03" /></td>
+              <td>
+                <h2>Queen</h2>
+                <p>留英回國的女性攝影師，銳利敏感的攝影風格為她贏得「女王」的封號，而在豪邁的影像中亦散發出細膩的氛圍。<br />
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <img src="images/about2.gif" alt="旅遊嚮導陣容" width="515" /><br />
+        <div id="people2">
+          <table>
+            <tr>
+              <td><img src="images/headpic4.jpg" /></td>
+              <td>
+                <h2>Eric</h2>
+                <p>不僅精通各國歷史地理，還能把各地景點介紹得生動活潑，加上像朋友般親切的個性，談笑風生幽默風趣的特質，一定會讓你的旅途永生難忘。<br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="images/headpic5.jpg" /></td>
+              <td>
+                <h2>Calvin</h2>
+                <p>人稱導遊界的極品，迷倒眾生的帥氣加上豐富的專業知識，讓旅途充滿歡樂與新鮮感。</p>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="images/headpic6.jpg" /></td>
+              <td>
+                <h2>Maggie</h2>
+                <p>思緒細密、經驗老到，十年的帶團經驗，豐沛充實的專業知識，不僅讓你玩得盡興，更可讓你了解到許多當地的風俗民情。</p>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="images/headpic2.jpg" /></td>
+              <td>
+                <h2>Kuma</h2>
+                <p>來自北海道的攝影大師，足跡遍及日本全島，閱歷及攝影經驗之豐富，絕對能帶給您嶄新的新視野。</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerBall電腦選號小程式</title>
+    <script src="comlib.js"></script>
+</head>
+
+<body>
+    <h3>威力採電腦選號，javascript產生小程式</h3>
+    <!-- <form action="" id="form1" name="form1" method="post">
+        <p>第一區範圍</p>
+        <p>啟始數：<input type="number" name="startBall" id="startBall" value="">
+            結束數：<input type="number" name="endBall" id="endBall" value="">
+            產出球數：<input type="number" name="getBall" id="getBall" value="">
+        </p>
+        <p>第二區範圍</p>
+        <p>
+            啟始數：<input type="number" name="startBall2" id="startBall2" value="">
+            結束數：<input type="number" name="endBall2" id="endBall2" value="">
+        </p> -->
+        <input type="button" name="button" id="button" value="產生電腦選號" onclick="choiceNumber();">
+    <!-- </form> -->
+    <hr>
+    <div id="show" name="show">
+        <h1>PowerBall電腦選號產生結果</h1>
+        <h2>第一區號碼：</h2>
+        <h2>第一區號碼排序後：</h2>
+        <h2>第二區號碼：</h2>
+    </div>
+    <div class="rules">
+        <p>Powerball®</p>
+        <p>Powerball® costs $2 per play. In Idaho and Montana, Powerball is bundled with Power Play® for a minimum
+            purchase</p>
+        <p>price of $3 per play.</p>
+        <p>Select five numbers between 1 and 69 for the white balls, then select one number between 1 and 26 for the red
+        </p>
+        <p>Powerball.</p>
+        <p>Choose your numbers on a play slip or let the lottery terminal randomly pick your numbers.</p>
+        <p>Drawings are held every Monday, Wednesday, and Saturday at 10:59 pm ET at the Florida Lottery draw studio in
+        </p>
+        <p>Tallahasee. To watch the drawings, click HERE.</p>
+        <p>The Powerball jackpot grows until it is won. Players win a prize by matching one of the 9 ways to win. The
+        </p>
+        <p>jackpot is won by matching all five white balls in any order and the red Powerball.</p>
+        <p>Jackpot winners may choose to receive their prize as an annuity, paid in 30 graduated payments over 29 years,
+            or</p>
+        <p>a lump-sum payment. Both advertised prize options are prior to federal and jurisdictional taxes.</p>
+    </div>
+    <script type="text/javascript">
+        //設定用物件的方式定義變數
+        var area1 = {
+            startBall: 1,
+            endBall: 69,
+            getBall: 5,
+            result: "",
+        };
+        var area2 = {
+            startBall: 1,
+            endBall: 26,
+            result: "",
+        };
+        //設定表單初始值
+        // document.getElementById("startBall").value = area1.startBall;
+        // document.getElementById("endBall").value = area1.endBall;
+        // document.getElementById("getBall").value = area1.getBall;
+        // document.getElementById("startBall2").value = area2.startBall;
+        // document.getElementById("endBall2").value = area2.endBall;
+        var ctrlCss = document.getElementById("show");
+        //ctrlCss.style.display = 'none'; 先隱藏結果樣板
+
+        function choiceNumber() {
+            //從表單取回被修改的值
+            area1.result = "";
+            area2.result = "";
+            // area1.startBall = document.getElementById("startBall").value;
+            // area1.endBall = document.getElementById("endBall").value;
+            // area1.getBall = document.getElementById("getBall").value;
+            // area2.startBall = document.getElementById("startBall2").value;
+            // area2.endBall = document.getElementById("endBall2").value;
+
+            let Ball = new Array();
+            let numMap = new Map(); // Map to keep track of numbers
+
+            // Generate random numbers for first set of balls
+            for (let i = 0; i < area1.getBall; i++) {
+                let chkData = rand(area1.startBall, area1.endBall); // Generate random number
+
+                // Check if the number is already in the map (i.e., a duplicate)
+                while (numMap.has(chkData)) {
+                    chkData = rand(area1.startBall, area1.endBall); // Generate new random number
+                }
+
+                // Add the number to the map
+                numMap.set(chkData, true);
+
+                // Convert and add the number to the Ball array
+                chkData = conv(chkData);
+                Ball.push(chkData);
+                area1.result = area1.result + chkData + "、";
+            }
+
+            BallSort = Ball.sort();
+            let sortLength = BallSort.length;
+            let resultSort ='';
+            for (i=0;i<sortLength;i++){
+                resultSort += BallSort[i]+ "、";
+            }
+            
+            resultLength = (3 * area1.getBall) - 1;
+            area1.result = area1.result.substr(0, resultLength);
+            resultSort = resultSort.substr(0, resultLength);
+            area2.result = rand(area2.startBall, area2.endBall); //產生第二區範圍隨機值
+            area2.result = conv(area2.result);
+            ctrlCss.style.display = 'block';  //顯示電腦選號結果
+            let htmlTag = "<h1>PowerBall電腦選號產生結果</h1><h2>第一區號碼：" + area1.result + "</h2><h2>第一區號碼排序後：" + resultSort + "</h2><h2>第二區號碼：" + area2.result + "</h2>";  //將結果排版
+            ctrlCss.innerHTML = htmlTag;  //將內容插入至id=show元件中
+        }
+    </script>
+</body>
+
+</html>

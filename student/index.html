@@ -1,0 +1,343 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>學員資料管理系統</title>
+  <style type="text/css">
+    .indexStud {
+      background: linear-gradient(315deg, rgba(0, 6, 120, 0.9) 0%, rgb(0, 6, 180, 0.85) 95%, rgb(0, 6, 210, 0.8) 100%);
+    }
+
+    a:link {
+      color: #000;
+      text-decoration: none;
+      background-color: #eeeeee;
+      display: block;
+    }
+
+    a:visited {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #F00;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #FFFF00;
+      display: block;
+    }
+
+    a:active {
+      color: #F00;
+      text-decoration: none;
+    }
+
+    .footerColor {
+      color: #FFF;
+      font-family: "標楷體";
+      font-weight: bold;
+    }
+
+    .container {
+      left: 50%;
+      margin: auto -140px;
+      position: absolute;
+      top: 36px;
+    }
+
+    .swing div {
+      border-radius: 50%;
+      float: left;
+      height: 2em;
+      width: 2em;
+      text-align: center;
+      line-height: 33px;
+      font-size: 18px;
+    }
+
+    .swing div:nth-of-type(1) {
+      background: -webkit-linear-gradient(left, #fffeb0 0%, #faffb2 100%);
+      background: linear-gradient(to right, #fffeb0 0%, #faffb2 100%);
+    }
+
+    .swing div:nth-of-type(2) {
+      background: -webkit-linear-gradient(left, #bcfab4 0%, #a6f0a3 100%);
+      background: linear-gradient(to right, #bcfab4 0%, #a6f0a3 100%);
+    }
+
+    .swing div:nth-of-type(3) {
+      background: -webkit-linear-gradient(left, #aefaff 0%, #8afff9 100%);
+      background: linear-gradient(to right, #aefaff 0%, #8afff9 100%);
+    }
+
+    .swing div:nth-of-type(4) {
+      background: -webkit-linear-gradient(left, #ffb8c7 0%, #ffa3a3 100%);
+      background: linear-gradient(to right, #ffb8c7 0%, #ffa3a3 100%);
+    }
+
+    .swing div:nth-of-type(5) {
+      background: -webkit-linear-gradient(left, #ff88f5 0%, #ff16e0 100%);
+      background: linear-gradient(to right, #ff88f5 0%, #ff16e0 100%);
+    }
+
+    .swing div:nth-of-type(6) {
+      background: -webkit-linear-gradient(left, #8effc7 0%, #00852c 100%);
+      background: linear-gradient(to right, #8effc7 0%, #00852c 100%);
+    }
+
+    .swing div:nth-of-type(7) {
+      background: -webkit-linear-gradient(left, #ff1f1f 0%, #c21700 100%);
+      background: linear-gradient(to right, #ff1f1f 0%, #c21700 100%);
+    }
+
+    .swing div:nth-of-type(8) {
+      background: -webkit-linear-gradient(left, #2a26ff 0%, #020070 100%);
+      background: linear-gradient(to right, #2a26ff 0%, #020070 100%);
+    }
+
+    .swing div:nth-of-type(9) {
+      background: -webkit-linear-gradient(left, #fbff00 0%, #efff0d 100%);
+      background: linear-gradient(to right, #fbff00 0%, #efff0d 100%);
+    }
+
+    .swing div:nth-of-type(10) {
+      background: -webkit-linear-gradient(left, #ffb13c 0%, #ffa600 100%);
+      background: linear-gradient(to right, #ffb13c 0%, #ffa600 100%);
+    }
+
+    .shadow {
+      clear: left;
+      padding-top: 1.5em;
+    }
+
+    .shadow div {
+      -webkit-filter: blur(1px);
+      filter: blur(1px);
+      float: left;
+      width: 2em;
+      height: .25em;
+      border-radius: 50%;
+      background: #e3dbd2;
+    }
+
+    .shadow .shadow-l {
+      background: #d5d8d6;
+    }
+
+    .shadow .shadow-r {
+      background: #eed3ca;
+    }
+
+    @-webkit-keyframes ball-l {
+
+      0%,
+      50% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(50deg) translateX(-2.5em);
+        transform: rotate(50deg) translateX(-2.5em);
+      }
+    }
+
+    @keyframes ball-l {
+
+      0%,
+      50% {
+        -webkit-transform: rotate(0) translate(0);
+        transform: rotate(0) translateX(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(50deg) translateX(-2.5em);
+        transform: rotate(50deg) translateX(-2.5em);
+      }
+    }
+
+    @-webkit-keyframes ball-r {
+      0% {
+        -webkit-transform: rotate(-50deg) translateX(2.5em);
+        transform: rotate(-50deg) translateX(2.5em);
+      }
+
+      50%,
+      100% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0);
+      }
+    }
+
+    @keyframes ball-r {
+      0% {
+        -webkit-transform: rotate(-50deg) translateX(2.5em);
+        transform: rotate(-50deg) translateX(2.5em);
+      }
+
+      50%,
+      100% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0)
+      }
+    }
+
+    @-webkit-keyframes shadow-l-n {
+
+      0%,
+      50% {
+        opacity: .5;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      100% {
+        opacity: .125;
+        -webkit-transform: translateX(-1.57em);
+        transform: translateX(-1.75em);
+      }
+    }
+
+    @keyframes shadow-l-n {
+
+      0%,
+      50% {
+        opacity: .5;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      100% {
+        opacity: .125;
+        -webkit-transform: translateX(-1.75);
+        transform: translateX(-1.75em);
+      }
+    }
+
+    @-webkit-keyframes shadow-r-n {
+      0% {
+        opacity: .125;
+        -webkit-transform: translateX(1.75em);
+        transform: translateX(1.75em);
+      }
+
+      50%,
+      100% {
+        opacity: .5;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes shadow-r-n {
+      0% {
+        opacity: .125;
+        -webkit-transform: translateX(1.75em);
+        transform: translateX(1.75em);
+      }
+
+      50%,
+      100% {
+        opacity: .5;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
+
+    .swing-l {
+      -webkit-animation: ball-l .425s ease-in-out infinite alternate;
+      animation: ball-l .425s ease-in-out infinite alternate;
+    }
+
+    .swing-r {
+      -webkit-animation: ball-r .425s ease-in-out infinite alternate;
+      animation: ball-r .425s ease-in-out infinite alternate;
+    }
+
+    .shadow-l {
+      -webkit-animation: shadow-l-n .425s ease-in-out infinite alternate;
+      animation: shadow-l-n .425s ease-in-out infinite alternate;
+    }
+
+    .shadow-r {
+      -webkit-animation: shadow-r-n .425s ease-in-out infinite alternate;
+      animation: shadow-r-n .425s ease-in-out infinite alternate;
+    }
+
+    #bgp {
+      background-image: url(./images/stationery.jpg);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div align="center" class="indexStud">
+    <table width="1024" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="90">
+          <div role="progressbar" class="container">
+            <div class="swing">
+              <div class="swing-l">學</div>
+              <div>員</div>
+              <div>資</div>
+              <div>料</div>
+              <div>管</div>
+              <div>理</div>
+              <div>系</div>
+              <div class="swing-r">統</div>
+            </div>
+            <div class="shadow">
+              <div class="shadow-l"></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div class="shadow-r"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td height="25">
+          <table width="1024" border="1" cellpadding="0" cellspacing="0" bordercolor="#fff">
+            <tr>
+              <td width="170" align="center" valign="middle"><a href="index.html">首頁</a></td>
+              <td width="170" align="center" valign="middle"><a href="index.php" target="main">資料瀏覽</a></td>
+              <td width="170" align="center" valign="middle"><a href="#">資料查詢</a></td>
+              <td width="170" align="center" valign="middle"><a href="#">圖片總覽</a></td>
+              <td width="170" align="center" valign="middle"><a href="#">好站連結</a></td>
+              <td width="170" align="center" valign="middle"><a href="login.php" target="main">資料異動</a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="608" id="bgp">
+          <iframe src="others/main.html" name="main" width="1024" height="608" scrolling="auto"
+            frameborder="0"></iframe>
+        </td>
+      </tr>
+      <tr bgcolor="#666600" class="footerColor">
+        <td height="45">
+          <table width="1024" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="612" height="45" align="center">網頁設計及維護：郭軒宏</td>
+              <td width="612" height="45" align="center">最近更新日期：2023-03-06</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

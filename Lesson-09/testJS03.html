@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="comlib.js"></script>
+</head>
+
+<body>
+    <script>
+        var level = 1;
+        var n = 1;
+        countLevel = rand(5, 15);
+        while (level <= countLevel) {
+            n = n * level;
+            document.write(level + "!=" + n + "<br>");
+            level++;
+        }
+
+        document.write("<hr>");
+
+        c = 100;
+        document.write("攝氏 --> 華氏<br>");
+        // do-while迴圈敘述
+        do {
+            f = (9.0 * c) / 5.0 + 32.0; //轉換公式
+            document.write(c + "--->" + f + "<br>");
+            c = rand(10, 100);  //取亂數溫度
+        } while (c < 100);
+
+        document.write("<hr>");
+
+        i = 1;
+        total = 0;
+        do {
+            document.write("|" + i);
+            total = total + i;
+            i++;
+            if (i > 15) break;
+        } while (true);
+        document.write("|<br>計算1加到15的總和=" + total);
+        document.write("<hr>");
+        totalFor = 0;
+        for (let i = 1; i <= 15; i++) {
+            if ((i % 2) == 1) {
+                continue;
+            }
+            document.write("|" + i);
+            totalFor = totalFor + i;
+        }
+        document.write("|<br>計算1加到15的偶數和=" + totalFor);
+        document.write("<hr>");
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= 9; j++) {
+                document.write(i + "*" + j + "=" + i * j + "<br>");
+            }
+            document.write("<br>");
+        }
+        document.write("<hr>");
+
+        // let a = 1;
+        // let b = 1;
+        // while (a < 10) {
+        //         if (b < 10) {
+        //             document.write(a + "*" + b + "=" + a * b+"|");
+        //             b++;
+        //         }
+        //         b=1;
+        //         a++; 
+        // }
+    </script>
+</body>
+
+</html>

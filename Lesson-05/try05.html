@@ -1,0 +1,273 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>可愛網頁設計Cute Design Studio</title>
+  <link href="website0303.css" rel="stylesheet" type="text/css" />
+  <script language="javascript" src="jquery.min.js"></script>
+  <style type="text/css">
+    .container {
+      position: fixed;
+      bottom: 0;
+      right: 1rem;
+      height: 80%;
+      width: 20%;
+    }
+
+    .container.hide {
+      display: none;
+    }
+
+    .container.show {
+      display: block;
+    }
+
+    .heart {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+
+    :root {
+      --duration: 1s;
+    }
+
+    .ani-1 {
+      animation: anime_1 var(--duration) linear;
+    }
+
+    .ani-2 {
+      animation: anime_2 var(--duration) linear;
+    }
+
+    .ani-3 {
+      animation: anime_3 var(--duration) linear;
+    }
+
+    .ani-4 {
+      animation: anime_4 var(--duration) linear;
+    }
+
+    @keyframes anime_1 {
+      0% {
+        opacity: 0.2;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      100% {
+        left: 70%;
+        top: 80%;
+        opacity: 0;
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes anime_2 {
+      0% {
+        opacity: 0.2;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      100% {
+        left: 60%;
+        top: 70%;
+        opacity: 0;
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes anime_3 {
+      0% {
+        opacity: 0.2;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      100% {
+        left: 40%;
+        top: 60%;
+        opacity: 0;
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes anime_4 {
+      0% {
+        opacity: 0.2;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      100% {
+        left: 55%;
+        top: 75%;
+        opacity: 0;
+        transform: translateX(-50%)
+      }
+    }
+
+    img #goTopButton {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="header"><a href="index.html"><img src="images1/main_logo.jpg" alt="logo" width="167" height="101"
+        class="headerLogo noborder transition" /></a><span class="headerCopy">Copyright © Cute Design Studio All rights
+      reserved.</span><a href="mailto:service@flag.com.tw"><img src="images1/email.png" alt="聯絡我們" width="150"
+        height="51" class="email" /></a></div>
+  <div id="content">
+    <div id="contentL">
+      <div id="sidemenu"><a href="about.html"><img src="images1/about_btn.png" alt="關於我們" width="162" height="144"
+            class="noborder transition" /></a><a href="works.html"><img src="images1/works_btn.png" alt="作品展示"
+            width="162" height="144" class="noborder transition" /></a></div>
+      <div id="listNew">
+        <p><span class="date">07-01</span><br />
+          <a href="http://www.flag.com.tw" target="_blank">Cute Design 工作室參與的新書 「正確學會 Dreamweaver CS6 的 16 堂課」
+            出版了，詳細請連此</a>
+        </p>
+        <p><span class="date">05-20</span><br />
+          <a href="works.html#bags">Cute Bags 獨家設計手提袋新上架，請洽各網路商店</a>
+        </p>
+        <p><span class="date">05-01</span><br />
+          <a href="works.html#tshirts">Cute Design 個性 T 恤上架，請洽各網路商店</a>
+        </p>
+      </div>
+    </div>
+    <div id="contentR"> <img src="images1/titles_works.jpg" width="500" height="242" class="topPhoto" />
+      <div id="contentMain">
+        <div id="booktop">
+          <a name="top" id="top"></a>
+          <p><img src="images/onepiece/C0300.jpg"></p>
+          <h3>《ONE PIECE》</h3>
+          <p>
+            作者：日本漫畫家尾田栄一郎<br>
+            出版社：集英社旗下雜誌《週刊少年Jump》連載<br>
+            系列別： 少年<br>
+            圖書分級：普遍級<br>
+            ISBN：978-626-347-462-8<br>
+            定價：新台幣售價：110 元<br>
+            出版日期：2023/1/5<br>
+          </p>
+        </div>
+        <p> <a href="#step1"> <span class="articleStep">Step 1</span></a>魚人島篇<br />
+          <a href="#step2"> <span class="articleStep">Step 2</span></a>多雷斯羅薩篇<br />
+          <a href="#step3"> <span class="articleStep">Step 3</span></a>世界會議篇
+        </p>
+        <div id="bookdata">
+          <h1>最後之海 新世界篇（最後の海 新世界編）為《ONE PIECE》的第二部故事。</h1>
+          <a name="step1" id="step1"></a><span class="articleStep">Step 1</span>
+          <p>
+            魚人島篇（魚人島編，收錄卷數：第61～66卷，收錄話數：第598～653話，動畫：第517～574集）
+            歷經兩年修行後重逢的草帽海賊團為了前往新世界，而出發邁向位於海底一萬公尺以下處的「魚人島」。他們遇到吉貝爾並得知魚人島的悲傷歷史，原本魚人島繼承已故王妃的想法、漸漸地接近與人類和平共處的理想，但是由荷帝·瓊斯所率領的新魚人海賊團卻粉碎這個理念企圖攻擊掌控魚人島藉此侵占陸地。草帽海賊團挺身阻止荷帝所率領的「新魚人海賊團」並與白星公主為首的魚人與人類之間開始建立新的羈絆。
+          </p>
+          <p><img src="images/onepiece/C0301.jpg" class="floatleft">
+            龐克哈薩特篇（パンクハザード編，收錄卷數：第66～70卷，收錄話數：第654～699話，動畫：第579～625集）
+            草帽海賊團與新任王下七武海托拉法爾加·D·瓦特爾·羅相遇，魯夫接受羅的提議組成「海賊同盟」，目標是「四皇」之一的「百獸」海道。他們靠著這強力的同盟來對抗在龐克哈薩特製造人工惡魔果實的凱薩·克勞恩。</p>
+          <p align="right"><a href="#top">回上面</a></p>
+          <div class="clearboth"></div>
+          <h2>《和之國篇 ワノ国編，收錄卷數：第90卷～105卷，收錄話數：第909話～1057話，動畫：第891集～》</h2>
+          <div class="clearboth"></div>
+          <p>
+
+            <img src="images/onepiece/C0302.jpg" class="floatleft">
+            索隆等人按錦衛門的要求偽裝成和之國國民。另一方面魯夫等人先後抵達四皇「百獸」海道駐紮的和之國。然而魯夫為了保護碰巧認識的玉兒攻擊海道的部下受到追捕。之後魯夫與錦衛門等人會合得知和桃之助他們其實是從二十年前的和之國「穿越時空來到現在」，為了實現光月家御田的遺願，決定在兩個禮拜後火祭神樂之日攻進統治和之國的海道所居住的「鬼島」討伐「百獸」海道及黑炭大蛇為目標展開戰鬥。
+            <img src="images/onepiece/C0303.jpg" class="floatright">
+          <p align="right"><a href="#top">回上面</a></p>
+          </p>
+          <div class="clearboth"></div>
+          <p><img src="images/onepiece/C0304.jpg" class="floatleft"></p>
+          <p><a name="step1" id="step2"></a><span class="articleStep">Step 2 </span></p>
+          <p>
+
+            多雷斯羅薩篇（ドレスローザ編，收錄卷數：第70～80卷，收錄話數：第700～801話，動畫：第629～746集）
+            草帽海賊團和羅潛入到唐吉訶德·多佛朗明哥治理下的王國「多雷斯羅薩」與多佛朗明哥旗下人馬展開對決，期間與革命軍參謀總長兼魯夫的義兄薩波重逢，在擊敗多佛朗明哥後，多佛朗明哥在多雷斯羅薩所實施的「統治」就此結束。而作為檯面下引路人的多佛朗明哥的垮台也使得世界局勢開始出現大幅度的變化。
+          </p>
+          <p align="right"><a href="#top">回上面</a></p>
+          <div class="clearboth"></div>
+          <p><img src="images/onepiece/C0305.jpg" class="floatleft">佐烏篇（ゾウ編，收錄卷數：第80～82卷，收錄話數：第802～822話，動畫：第751～779集）
+            魯夫等人到佐烏國家與娜美等人會合，但此國家卻已呈現潰滅狀態。魯夫一行人追查發生在這個國家的秘密卻意外發現香吉士出身為殺手家族—傑爾馬66。魯夫一行人為了阻止香吉士結婚正在思考救回他的方法時，意外得知和之國光月一族的秘密。魯夫等人得知這件驚人事實於是將下一個擊倒的目標鎖定為四皇「百獸」海道。魯夫、索隆與和之國光月一族及佐烏的住民為各自的目的分組團隊。
+          </p>
+          <p align="right"><a href="#top">回上面</a></p>
+          <div class="clearboth"></div>
+          <p><img src="images/onepiece/C0306.jpg"
+              class="floatleft">圓蛋糕島篇（ホールケーキアイランド編，收錄卷數：第82～90卷，收錄話數：第823～902話，動畫：第783～877集）
+            魯夫團隊前往四皇「BIG MOM」夏洛特·莉莉所在的「萬國」蛋糕島準備找回要結婚的香吉士。魯夫等人理解香吉士與家族聯姻的真正理由再度和吉貝爾相會，並與想要暗殺BIG MOM的火戰車海賊團、
+            凱薩·克勞恩組成暫時聯盟，成功破壞雙方聯姻婚禮，救出香吉士和其家族杰爾馬66。吉貝爾為實踐理念正式宣布退出BIG MOM旗下與辭別太陽海賊團，以掌舵手的身分加入草帽海賊團。在一行人達成目的後逃出BIG
+            MOM的領地，期間魯夫與BIG MOM海賊團的夏洛特·卡塔克利展開激烈對決在最後的對決中獲勝。
+          <p align="right"><a href="#top">回上面</a></p>
+          </p>
+          <div class="clearboth"></div>
+          <p><img src="images/onepiece/C0307.jpg" class="floatleft">
+            <a name="step1" id="step3"></a><span class="articleStep">Step 3 </span>
+            世界會議篇（世界会議編，收錄卷數：第90卷；收錄話數：第903～908話，動畫：第878～890集）
+            世界政府加盟國裡作為代表的五十個國家，再度前往「聖地」馬力喬亞召開每四年一次的世界會議，商討世界大局政策。
+          <p align="right"><a href="#top">回上面</a></p>
+          </p>
+          <div class="clearboth"></div>
+          <h3>預告片內容：</h3>
+          <video controls="controls" autoplay="autoplay" width="320" height="180" poster="media/ONEPIECELogo.png" muted>
+            <source src="media/onePiece1074.mp4" type=video/mp4 />
+            若無法看到影片，請改用IE 9/Safari 3 /Firefox4 /Opera10.6 /Chrome 6.0以上版本瀏覽觀看本頁。
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <div class="container">
+    <!--  <div class="heart">-->
+    <img src="gotop01.png" id="goTopButton">
+    <!--  </div>-->
+  </div>
+  <script>
+    const images = [];
+    const aniGroup = ["ani-1", "ani-2", "ani-3", "ani-4"];
+    const randomNum = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min);
+    };
+
+    const createImg = () => {
+        images.forEach(function (image) {
+        image.parentNode.removeChild(image);
+        });
+        for (let i = 0; i < 10; i++) {
+        const image = new Image();
+        image.src = "gotop01.png";
+        image.style.position = "fixed";
+        image.classList.add(aniGroup[randomNum(0, aniGroup.length)]);
+        image.style.animationDelay = randomNum(200, 1000) + "ms";
+        image.addEventListener("load", function () {
+          document.body.appendChild(this);
+          images.push(this);
+        });
+      }
+    }
+    // To remove the images:
+    
+
+    const startAnimationImg = document.getElementById("goTopButton");
+    startAnimationImg.addEventListener("click", () => {
+      setInterval(createImg, 500);
+    });
+  </script>
+  <!-- <script type="text/javascript" src="gotop03.js"></script> -->
+
+</body>
+
+</html>

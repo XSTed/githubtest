@@ -1,0 +1,45 @@
+.content {
+    background-color: blue;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    /* flex-direction: row| row-reverse| column| column-reverse;content中內容項目的排列方式與方向*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-wrap:nowrap | wrap| wrap-reverse; items在有需要的時候自動換行*/
+    justify-content: flex-start;
+    /*justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly;
+    content主軸作對齊的方式*/
+    align-items: center;
+    /* align-items:flex-start|flex-end|center|baseline|stretch;content交錯軸對齊的方式*/
+    align-content: stretch;
+    /* align-content: flex-start|flex-end|center|space-between|space-around|stretch;content內交錯軸整體元件的對齊*/
+    
+}
+
+.item {
+    background-color: chartreuse;
+    width: 98px;
+    border: solid 1px red;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 50px; */
+}
+
+.fontset{
+    font-size: 200px;
+    line-height: 200px;
+}
+
+.alignSelfstart{
+    /* align-self: auto|stretch|center|flex-start|flex-end|baseline 調整子元素在交錯軸線的位置*/
+    align-self: flex-start;
+}
+.alignSelfstart1{
+    align-self: flex-end;
+}
+
+.orderCtl{
+    /* order:0|0-N|default:0|控制區塊順序位子*/
+    order: 1;
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生成績測試資料產生</title>
+    <style type="text/css">
+        table {
+            text-align: center;
+        }
+
+        .colorRed {
+            color: red;
+        }
+
+        .colorGreen {
+            color: green;
+        }
+
+        .colorGreenW {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript" src="comlib.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+
+</head>
+
+<body>
+    <table id="scorelist" border="1">
+        <tr>
+            <td colspan="10">學生成績測試資料產生</td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>國文</td>
+            <td>英文</td>
+            <td>數學</td>
+            <td>計算機概論</td>
+            <td>工廠實習</td>
+            <td>微積分</td>
+            <td>體育</td>
+            <td>平均成績</td>
+            <td>排名</td>
+        </tr>
+    </table>
+    <hr>
+    <div id="main" style="width:800px;height:600px;"></div>
+    <div id="main1" style="width:800px;height:600px;"></div>
+    <div id="main2" style="width:800px;height:600px;"></div>
+    <script type="text/javascript">
+        scoreSheet = new Array();
+        fail = new Array(0, 0, 0, 0, 0, 0, 0);
+        rankArray = new Array();
+        statistics = new Array();  //統計各科成績分布陣列
+        avgScore = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //統計平均成績分布陣列
+        for (let i = 0; i <= 6; i++) {
+            statistics[i] = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);  //預設各科成績區段人數為0開始
+        }
+        for (let i = 0; i < 30; i++) {
+            total = 0;
+            scoreSheet.push(Array("student" + (i + 1), rand(1, 100), rand(1, 100), rand(1, 100), rand(1, 100), rand(1, 100), rand(1, 100), rand(1, 100), 0, 0));
+            for (let j = 1; j <= 7; j++) {
+                if (scoreSheet[i][j] < 60) {    //計算不及格人數
+                    fail[j - 1]++;
+                }
+                statistics[j - 1][scoreAssign(scoreSheet[i][j])]++;  //計算各科成績分布累加
+                total = total + scoreSheet[i][j];   //總分累加
+            }
+            //計算平均成績
+            scoreSheet[i][8] = Math.round((total / 7) * 100) / 100; //除7科成績取平均到小數第二位
+            const scoreRange = scoreAssign(scoreSheet[i][8]);  //計算平均成績分布累加
+            console.log(scoreRange);
+            console.log(typeof (scoreRange));
+            avgScore[scoreRange] += 1;
+            rankArray.push([scoreSheet[i][8], 0]);
+        }
+
+        //計算班上排名
+        rankArray.sort((a, b) => b[0] - a[0]);    //先平均分數排序由大到小
+        let rank = 0;
+        let prevScore = null;
+        for (let i = 0; i < rankArray.length; i++) {
+            if (prevScore === null || rankArray[i][0] !== prevScore) {
+                rank++;
+                prevScore = rankArray[i][0];
+            }
+            rankArray[i][1] = rank;
+        }
+
+        // 將排名存入scoreSheet陣列中
+        for (let i = 0; i < 30; i++) {
+            for (let j = 0; j < rankArray.length; j++) {
+                if (scoreSheet[i][8] == rankArray[j][0]) {
+                    scoreSheet[i][9] = rankArray[j][1];
+                    break;
+                }
+            }
+        }
+
+
+        let i = 0;
+        while (i < 30) {
+            var lastRow = document.getElementById("scorelist").rows.length;   //取得表格列總列數
+            var tableTr = document.getElementById("scorelist").insertRow(lastRow); //新增一列
+            let j = 0;
+            do {
+                var td = tableTr.insertCell(tableTr.cells.length);
+                if (j > 0 && j < 9) {
+                    if (scoreSheet[i][j] >= 95) {
+                        td.innerHTML = "*" + scoreSheet[i][j];
+                    }
+                    else {
+                        td.innerHTML = scoreSheet[i][j];
+                    }
+                    scoreFormat(scoreSheet[i][j]);
+                } else {
+                    td.innerHTML = scoreSheet[i][j];
+                }
+                j++;
+            } while (j <= 9);
+            i++;
+        }
+        lastRow = document.getElementById("scorelist").rows.length;
+        tableTr = document.getElementById("scorelist").insertRow(lastRow);
+        td = tableTr.insertCell(tableTr.cells.length);
+        td.innerHTML = "不及格小計";
+        i = 0;
+        while (i < 7) {
+            td = tableTr.insertCell(tableTr.cells.length);
+            td.innerHTML = fail[i];
+            i++;
+        }
+        td = tableTr.insertCell(tableTr.cells.length);
+        td.innerHTML = "--";
+        td = tableTr.insertCell(tableTr.cells.length);
+        td.innerHTML = "--";
+        // 設定成績分配在哪個陣列區段功能函數
+        function scoreAssign(data = 0) {
+            if (data == 100) {
+                return (10);
+            } else if (data >= 90) {
+                return (9);
+            } else if (data >= 80) {
+                return (8);
+            } else if (data >= 70) {
+                return (7);
+            } else if (data >= 60) {
+                return (6);
+            } else if (data >= 50) {
+                return (5);
+            } else if (data >= 40) {
+                return (4);
+            } else if (data >= 30) {
+                return (3);
+            } else if (data >= 20) {
+                return (2);
+            } else if (data >= 10) {
+                return (1);
+            } else {
+                return (0);
+            }
+        }
+
+        function scoreFormat(score) {
+            if (score < 60) {
+                td.setAttribute("class", "colorRed");
+            } else if (score >= 95) {
+                td.setAttribute("class", "colorGreenW");
+            } else if (score >= 90) {
+                td.setAttribute("class", "colorGreen");
+            }
+        }
+
+        //設定echarts要顯示對映的div元件
+        var myChart = echarts.init(document.getElementById('main'));
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        var myChart2 = echarts.init(document.getElementById('main2'));
+        var clist = ['國文', '英文', '數學', '計算機概論', '工廠實習', '微積分', '體育'];
+        //設定圖表所有顯示的方式與格式
+        var option = {
+            title: {
+                text: '班級成績統計圖'
+            },
+            tooltip: {},
+            legend: {
+                data: ['不及格人數']
+            },
+            xAxis: {
+                data: clist
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '不及格人數',
+                    type: 'bar',
+                    data: [{
+                        value: fail[0],
+                        itemStyle: { color: '#5470c6' }
+                    }, {
+                        value: fail[1],
+                        itemStyle: { color: '#91cc75' }
+                    }, {
+                        value: fail[2],
+                        itemStyle: { color: '#fac858' }
+                    }, {
+                        value: fail[3],
+                        itemStyle: { color: '#ee6666' }
+                    }, {
+                        value: fail[4],
+                        itemStyle: { color: '#73c0de' }
+                    }, {
+                        value: fail[5],
+                        itemStyle: { color: '#3ba272' }
+                    }, {
+                        value: fail[6],
+                        itemStyle: { color: '#fc8452' }
+                    }]
+                }
+            ]
+        }
+
+        var option1 = {
+            title: {
+                text: '各科成績分布圖',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: clist
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: clist[0],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[0]
+                },
+                {
+                    name: clist[1],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[1]
+                },
+                {
+                    name: clist[2],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[2]
+                },
+                {
+                    name: clist[3],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[3]
+                },
+                {
+                    name: clist[4],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[4]
+                },
+                {
+                    name: clist[5],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[5]
+                },
+                {
+                    name: clist[6],
+                    type: 'line',
+                    stack: 'Total',
+                    data: statistics[6]
+                },
+            ]
+        }
+
+        option2 = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: 'Access From',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        borderRadius: 10,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 40,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: avgScore[0], name: '0-9' },
+                        { value: avgScore[1], name: '10-19' },
+                        { value: avgScore[2], name: '20-29' },
+                        { value: avgScore[3], name: '30-39' },
+                        { value: avgScore[4], name: '40-49' },
+                        { value: avgScore[5], name: '50-59' },
+                        { value: avgScore[6], name: '60-69' },
+                        { value: avgScore[7], name: '70-79' },
+                        { value: avgScore[8], name: '80-89' },
+                        { value: avgScore[9], name: '90-99' },
+                        { value: avgScore[10], name: '100' }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+
+
+                }
+            ]
+        };
+        //將所設定的圖表參數，進行對映的div元件啟動顯示
+        myChart.setOption(option);
+        myChart1.setOption(option1);
+        myChart2.setOption(option2);
+
+
+        
+    </script>
+</body>
+
+</html>

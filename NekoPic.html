@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NekoPic</title>
+    <style type="text/css">
+        /*QuickReset*/
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%
+        }
+
+        body {
+            min-height: 100%;
+            font: 14px/1.4 sans-serif;
+        }
+
+        .grid-3 {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .thumb {
+            display: flex;
+            flex-flow: column nowrap;
+            position: relative;
+            overflow: hidden;
+            width: 33.333%;
+            color: #fff;
+        }
+
+        .thumb-gradient,
+        .thumb-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: 1px;
+        }
+
+        .thumb-gradient {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.56) 100%);
+        }
+
+        .thumb-anim {
+            margin-top: auto;
+            /* pushes all content to bottom */
+            position: relative;
+            transition: 0.5s;
+            transform: translateY(100%);
+        }
+
+        .thumb-title {
+            text-transform: uppercase;
+            padding: 20px;
+            transition: 0.5s;
+            transform: translateY(-100%);
+        }
+
+        .thumb-description {
+            padding: 10px 20px;
+            transition: 0.5s;
+            opacity: 0;
+            flex: 1;
+        }
+
+        .thumb-author {
+            padding: 20px;
+            position: relative;
+        }
+
+
+        /* ANIMATE */
+
+        .thumb:hover .thumb-anim {
+            transform: translateY(0);
+        }
+
+        .thumb:hover .thumb-title {
+            transform: translateY(0%);
+        }
+
+        .thumb:hover .thumb-description {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-3">
+
+        <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/300/300" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title</h3>
+                <p class="thumb-description">
+                    Text lenghts of Title and Author or even Description do not matter. They will all perfectly
+                    accommodate into .thumb on hover
+                </p>
+            </div>
+            <div class="thumb-author">Published by super long some Author</div>
+        </div>
+
+        <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/400/300" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title</h3>
+                <p class="thumb-description">
+                    The row heights are dictated by the tallest in the horizontal group
+                </p>
+            </div>
+            <div class="thumb-author">Published</div>
+        </div>
+
+        <!-- <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/230/300" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title a super long title here</h3>
+                <p class="thumb-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus facilis beatae, numquam
+                    aliquam eveniet. Iure porro provident itaque hic quae tempora. Quaerat doloribus dolore facilis
+                    similique, soluta asperiores quas sapiente.
+                </p>
+            </div>
+            <div class="thumb-author">Published by super long some Author</div>
+        </div>
+
+        <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/270/300" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title</h3>
+                <p class="thumb-description">
+                    Text lenghts of Title and Author or even Description do not matter. They will all perfectly
+                    accommodate into .thumb on hover
+                </p>
+            </div>
+            <div class="thumb-author">Published by super long some Author</div>
+        </div>
+
+        <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/250/370" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title</h3>
+                <p class="thumb-description">
+                    Text lenghts of Title and Author or even Description do not matter. They will all perfectly
+                    accommodate into .thumb on hover
+                </p>
+            </div>
+            <div class="thumb-author">Yep. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate sequi
+                aspernatur cumque saepe incidunt enim, nihil dolores ipsam numquam architecto velit labore quod
+                laboriosam aliquam distinctio tempora unde ad totam.</div>
+        </div>
+
+        <div class="thumb">
+            <img class="thumb-img" src="http://placekitten.com/290/340" alt="Catz!">
+            <div class="thumb-gradient"></div>
+            <div class="thumb-anim">
+                <h3 class="thumb-title">The movie title</h3>
+                <p class="thumb-description">
+                    Text lenghts of Title and Author or even Description do not matter. They will all perfectly
+                    accommodate into .thumb on hover
+                </p>
+            </div>
+            <div class="thumb-author">Published by super long some Author</div>
+        </div> -->
+
+    </div>
+</body>
+
+</html>

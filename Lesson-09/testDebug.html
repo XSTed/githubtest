@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="comlib.js"></script>
+</head>
+
+<body>
+    <input type="number" name="input01" id="input01" value="90"><button type="button" id="btn01" name="btn01"
+        onclick="checkPass()">分數是否及格</button>
+    <h3 id="text01"></h3>
+    <script>
+        var input01 = document.getElementById("input01");
+        var text01 = document.getElementById("text01");
+        input01.value = rand(1, 100);
+        input01.onchange = function(){
+            checkPass();
+        }
+        console.log(input01);
+        function checkPass() {
+            // debugger;
+            let score = input01.value;
+            let result = "測試成績:" + conv(score) + "<br>";
+            if (score < 60) {
+                result = result + "測試成績判斷為不及格<br>";
+            }
+
+            if (score > 60) {
+                result = result + "測試成績判斷為及格<br>";
+            }
+            text01.innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>

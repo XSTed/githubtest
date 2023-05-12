@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="test001.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" style="background-color: red;">大型螢幕的排版col-lg-3</div>
+            <div class="col-lg-9" style="background-color: blue;">大型螢幕的排版col-lg-9</div>
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3" style="background-color: green;">大型螢幕的排版col-lg-3</div>
+            <div class="col-lg-9 col-md-9" style="background-color: purple;">大型螢幕的排版col-lg-9</div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 bg-primary">col-md-4這是電腦排版方式1</div>
+            <div class="col-md-4 bg-success">col-md-4這是電腦排版方式2</div>
+            <div class="col-md-4 bg-warning">col-md-4這是電腦排版方式3</div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6 col-md-4" style="background-color: blue;">.col-6 .col-md-4這是電腦、手機排版方式1</div>
+        <div class="col-6 col-md-4 bg-info">.col-6 .col-md-4這是電腦、手機排版方式2</div>
+        <div class="col-6 col-md-4" style="background-color: yellowgreen;">.col-6 .col-md-4這是電腦、手機排版方式3</div>
+    </div>
+    <hr>
+
+    <div class="container-fluid"><h1>練習二</h1></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 bg-primary" style="font-size: 18px; font-weight: bolder;">col-md-4這是平板排版方式1</div>
+            <div class="col-sm-4 bg-success" style="font-size: 18px; font-weight: bolder;">col-md-4這是平板排版方式2</div>
+            <div class="col-sm-2 bg-warning" style="font-size: 18px; font-weight: bolder;">col-md-4這是平板排版方式3</div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 col-md-3"
+                style="background-color: red; color: blue; font-family: 微軟正黑體,Arial, Helvetica;">這是手機、電腦全版排版方式1</div>
+            <div class="col-3 col-md-4"
+                style="background-color: green; color: red; font-family: 微軟正黑體,Arial, Helvetica;">這是手機、電腦全版排版方式2</div>
+            <div class="col-3 col-md-3"
+                style="background-color: blue; color: green; font-family: 微軟正黑體,Arial, Helvetica;">這是手機、電腦全版排版方式3</div>
+            <div class="col-3 col-md-2"
+                style="background-color: rgb(255, 255, 0); color: rgb(255, 0, 255); font-family: 微軟正黑體,Arial, Helvetica;">
+                這是手機、電腦全版排版方式3</div>
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2" style="background-color: red; color: blue;">
+                這是手機全版排版方式1
+            </div>
+            <div class="col-2" style="background-color: rgb(4, 0, 255); color: rgb(145, 255, 0);">
+                這是手機全版排版方式2
+            </div>
+            <div class="col-8" style="background-color: rgb(43, 255, 0); color: rgb(255, 0, 0);">
+                這是手機全版排版方式3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-lg-12"
+                style="background-color: green; font-style: italic; line-height: 5em; font-family: 新細明體;color:red;">
+                這是電腦md、電視lg組合排版測試方式1
+            </div>
+            <div class="col-md-5 col-lg-12"
+                style="background-color: purple; font-style: oblique; line-height: 5em; font-family: 新細明體;color:green;">
+                這是電腦md、電視lg組合排版測試方式2
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-6" style="border: 1px solid black; padding: 10px; text-align: center; font-size: 20pt; font-weight: bold;">
+                這是AI(手機、平板、電腦、電視)組合排版測試方式
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container"><h1>offSet測試</h1></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" style="background-color: purple;">col2為正常位置</div>
+            <div class="col-md-4 offset-2" style="background-color: blue;">col4為徧移2位置</div>
+        </div>
+        <div class="row">
+            <div class="col-3 offset-3" style="background-color: purple;">col3為徧移3位置</div>
+            <div class="col-3 offset-1" style="background-color: blue;">col3為徧移1位置</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 offset-4" style="background-color: purple;">col6為徧移4位置</div>
+            <div class="col-sm-4" style="background-color: blue;">col4正常位置</div>
+        </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

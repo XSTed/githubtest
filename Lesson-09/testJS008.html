@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
+
+        .clockArea {
+            width: 100%;
+            height: 400px;
+            background-image: radial-gradient(#000, #555);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .digital-clock {
+            width: 60%;
+            padding: 20px;
+            color: #fff;
+            border: 2px solid #999;
+            border-radius: 10px;
+            font-family: 'Rowdies', Arial, Helvetica, sans-serif;
+            font-size: 3vw;
+            background-image: linear-gradient(180deg, #000, #555);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <div class="card col-sm-8 mx-auto">
+                <div class="clockArea">
+                    <h5 name="title">Hello, World!</h5>
+                    <div class="digital-clock">
+                        00:00:00 AM
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">JS測試：系統時鐘小測試</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                    </p>
+                    <button class="btn btn-primary" type="button">
+                        24時制更換
+                    </button>
+                    <button class="btn btn-success" type="button">
+                        停止
+                    </button>
+                    <button class="btn btn-warning" type="button">
+                        隱藏日期標題
+                    </button>
+                    <button class="btn btn-info" type="button">
+                        變更民國日期標題
+                    </button>
+                    <button class="btn btn-danger" type="button">
+                        變更背景顏色
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="comlib.js"></script>
+    <script type="text/javascript">
+        // 英文日曆對映資料陣列
+        var months = [
+            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        var days = [
+            'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+        ];
+        var cdays = [
+            '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'
+        ];
+        var timeFormat = 12; // 12/24時制判斷變數，預設12小時制
+        var interval;        // 設定time setInterval回傳的編號，可用以停止。
+        var dateHide = true;
+        var cdate = false;  // 顯示西元/民國日期標題判斷變數，預設西元日期
+        //建立12/24時制更換按鈕監聽
+        document.getElementsByClassName("btn-primary")[0].addEventListener("click", chgFormat);
+        document.getElementsByClassName("btn-success")[0].onclick = () => {
+            if (interval != 0) {
+                clearInterval(interval);
+                interval = 0;
+                document.getElementsByClassName("btn-success")[0].innerHTML = "啟動";
+            } else {
+                interval = setInterval(clockUpdate, 1000);
+                document.getElementsByClassName("btn-success")[0].innerHTML = "停止";
+            }
+        };
+        //建立顯示/隱藏日期標題按鈕監聽
+        document.getElementsByClassName("btn-warning")[0].addEventListener("click", showDate);
+        document.getElementsByClassName("btn-info")[0].addEventListener("click", chgCdate);
+        //建立變更背景顏色按鈕監聽
+        document.getElementsByClassName("btn-danger")[0].addEventListener("click", chgBackground);
+
+        document.getElementsByTagName('body')[0].onload = function () {
+            document.getElementsByClassName("digital-clock")[0].setAttribute('style', "color:#fff;text-shadow:0 0 6px #ff0;");
+            document.getElementsByName("title")[0].style.color = "#fff";
+            clockUpdate();
+            interval = setInterval(clockUpdate, 1000);
+        }
+        function clockUpdate() {
+            var date = new Date();
+            var day = date.getDate();
+            var year = date.getFullYear();
+            var s = conv(date.getSeconds());
+            var m = conv(date.getMinutes());
+            var h = conv(date.getHours());
+            //判斷12/24時制顯示方式
+            if (timeFormat == 12) {
+                var h = conv(twelveHour(date.getHours()));
+                var formatStr = h + ':' + m + ':' + s + ((date.getHours() >= 12) ? "PM" : "AM");
+            } else {
+                var h = conv(date.getHours());
+                var formatStr = h + ':' + m + ':' + s;
+            }
+            document.getElementsByClassName("digital-clock")[0].innerHTML = formatStr;
+            //設定對映的星期，月，日，年的英文顯示方式
+            var dayOfWeek = days[date.getDay()];
+            var month = months[date.getMonth()];
+            // cdate判斷西元false/民國true日期標題
+            if (cdate) {
+                var dateString = '民國' + (year - 1911) + '年' + (date.getMonth() + 1) + '月' + day + '日' + '，' + cdays[date.getDay()];
+            } else {
+                var dateString = dayOfWeek + ', ' + month + ' ' + day + ', ' + year;
+            }
+            document.getElementsByName("title")[0].innerHTML = dateString;
+        }
+        // 12/24時制更換功能函數
+        function chgFormat() {
+            if (timeFormat == 12) {
+                timeFormat = 24;
+                document.getElementsByClassName("btn-primary")[0].innerHTML = "12時制更換";
+            } else {
+                timeFormat = 12;
+                document.getElementsByClassName("btn-primary")[0].innerHTML = "24時制更換";
+            }
+        }
+        // 12時制，HOUR大於12小時需進行轉換
+        function twelveHour(hour) {
+            return (hour > 12) ? hour - 12 : hour;
+        }
+        // 啟動/停止系統時鐘程式功能
+        // function timeStop(){
+        //     if (interval != 0) {
+        //         clearInterval(interval);
+        //         interval = 0;
+        //         document.getElementsByClassName("btn-success")[0].innerHTML = "啟動";
+        //     } else {
+        //         interval = setInterval(clockUpdate,1000);
+        //         document.getElementsByClassName("btn-success")[0].innerHTML = "停止";
+        //     }
+        // }
+        //顯示/隱藏日期標題功能函數
+        function showDate() {
+            if (dateHide) {
+                dateHide = false;
+                document.getElementsByClassName("btn-warning")[0].innerHTML = "顯示日期標題";
+                document.getElementsByName("title")[0].style.display = "none";
+            } else {
+                dateHide = true;
+                document.getElementsByClassName("btn-warning")[0].innerHTML = "隱藏日期標題";
+                document.getElementsByName("title")[0].style.display = "block";
+            }
+        }
+        // 顯示西元false/民國true日期功能函數
+        function chgCdate() {
+            if (cdate) {
+                cdate = false;
+                document.getElementsByClassName("btn-info")[0].innerHTML = "變更民國日期標題";
+            } else {
+                cdate = true;
+                document.getElementsByClassName("btn-info")[0].innerHTML = "變更西元日期標題";
+            }
+        }
+        // 變更背景顏色功能函數
+        function chgBackground() {
+            var color1 = "rgb(" + rand(1, 255) + "," + rand(1, 255) + "," + rand(1, 255) + ")";
+            var color2 = "rgb(" + rand(1, 255) + "," + rand(1, 255) + "," + rand(1, 255) + ")";
+            var bgset = "background-image:radial-gradient(" + color1 + "," + color2 + ")";
+            document.getElementsByClassName("clockArea")[0].setAttribute('style', bgset);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* make scrollbar disappear */
+html {
+  overflow:   scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+  background-color: -webkit-linear-gradient(93deg, #f35626, #feab3a);
+  -webkit-animation: hue 1s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+.container {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+.container #iphone {
+  height: 605px;
+  width: 300px;
+  border-radius: 50px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 50px;
+  position: relative;
+  box-shadow: inset 0 -4px 10px 2px rgba(255, 255, 255, 0.1), inset 0 4px 10px 2px rgba(0, 0, 0, 0.25), inset 0 0 0 2px #666, 0 1px 0 2px rgba(255, 255, 255, 0.1), 0 -1px 0 2px rgba(0, 0, 0, 0.25);
+}
+.container #iphone::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 50px 50px 150px 10px rgb(70, 70, 70);
+  border-radius: inherit;
+}
+.container #iphone .right-button {
+  position: absolute;
+  z-index: 999;
+  right: -4px;
+  top: 140px;
+  width: 4px;
+  height: 40px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, rgb(53, 53, 53), rgb(122, 122, 122));
+  cursor: pointer;
+}
+.container #iphone .left-top-button {
+  position: absolute;
+  left: -4px;
+  top: 100px;
+  width: 4px;
+  height: 25px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, rgb(204, 204, 204), rgb(53, 53, 53));
+  cursor: pointer;
+}
+.container #iphone .left-middle-button {
+  position: absolute;
+  left: -4px;
+  top: 150px;
+  width: 4px;
+  height: 42px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, rgb(204, 204, 204), rgb(53, 53, 53));
+  cursor: pointer;
+}
+.container #iphone .left-bottom-button {
+  position: absolute;
+  left: -4px;
+  top: 200px;
+  width: 4px;
+  height: 42px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, rgb(204, 204, 204), rgb(53, 53, 53));
+  cursor: pointer;
+}
+.container #iphone .top-line {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  height: 5px;
+  width: 70px;
+  background-color: rgb(56, 56, 56);
+  border-radius: 10px;
+  box-shadow: inset 0 -4px 10px 2px rgba(255, 255, 255, 0.1), inset 0 4px 10px 2px rgba(0, 0, 0, 0.25), inset 0 0 0 2px #666, 0 1px 0 2px rgba(255, 255, 255, 0.1), 0 -1px 0 2px rgba(0, 0, 0, 0.25);
+}
+.container #iphone .top-bullet {
+  position: absolute;
+  left: 34%;
+  top: 40px;
+  transform: translate(-50%, -25%);
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background-color: rgb(58, 58, 58);
+  box-shadow: inset 0 -4px 10px 2px rgba(255, 255, 255, 0.1), inset 0 4px 10px 2px rgba(0, 0, 0, 0.25), inset 0 0 0 2px #666, 0 1px 0 2px rgba(255, 255, 255, 0.1), 0 -1px 0 2px rgba(0, 0, 0, 0.25);
+}
+.container #iphone .bottom-button {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: inset 0 -4px 10px 2px rgba(255, 255, 255, 0.1), inset 0 4px 10px 2px rgba(0, 0, 0, 0.25), inset 0 0 0 2px #666, 0 1px 0 2px rgba(255, 255, 255, 0.1), 0 -1px 0 2px rgba(0, 0, 0, 0.25);
+}
+.container #iphone .screen {
+  width: 100%;
+  height: 450px;
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  z-index: 999 !important;
+  cursor: pointer;
+}
+.container #iphone .screen .head-top {
+  width: 100%;
+  height: 30px;
+}
+.container #iphone .screen .head-top > * {
+  color: white;
+}
+.container #iphone .screen .head-top .left-side i {
+  font-size: 15px;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+.container #iphone .screen .head-top .clock {
+  font-size: 12px;
+}
+.container #iphone .screen .head-top .right-side i {
+  font-size: 9px;
+  margin-top: 3px;
+  margin-right: 2px;
+}
+.container #iphone .screen .head-top .right-side .percent {
+  font-size: 11px;
+  margin-top: 3px;
+}
+.container #iphone .screen .head-top .right-side .battery {
+  font-size: 20px;
+  margin-left: 3px;
+  margin-top: -7px;
+}
+.container #iphone .screen #main {
+  width: 100%;
+  height: 370px;
+}
+.container #iphone .screen #main #buttons {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  z-index: 999 !important;
+}
+.container #iphone .screen #main #buttons span {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 13px;
+  position: relative;
+  cursor: pointer;
+}
+.container #iphone .screen #main #buttons span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+.container #iphone .screen #main #buttons span:first-child {
+  background-color: rgb(1, 66, 1);
+  color: rgb(67, 219, 67);
+  position: relative;
+}
+.container #iphone .screen #main #buttons span:first-child::before {
+  border: 1px solid rgb(1, 66, 1);
+}
+.container #iphone .screen #main #buttons span:nth-of-type(2) {
+  background-color: rgb(90, 10, 10);
+  color: rgb(247, 29, 29);
+  position: relative;
+}
+.container #iphone .screen #main #buttons span:nth-of-type(2)::before {
+  border: 1px solid rgb(90, 10, 10);
+}
+.container #iphone .screen #main #buttons span:nth-last-of-type(1), .container #iphone .screen #main #buttons span:nth-last-of-type(2) {
+  background-color: rgb(150, 150, 150);
+  color: white;
+  position: relative;
+}
+.container #iphone .screen #main #buttons span:nth-last-of-type(1)::before, .container #iphone .screen #main #buttons span:nth-last-of-type(2)::before {
+  border: 2px solid rgb(63, 63, 63);
+}
+.container #iphone .screen #main .watch {
+  width: 70%;
+  height: 50%;
+}
+.container #iphone .screen #main .watch h2 {
+  font-variant-numeric: tabular-nums;
+  font-size: 40px;
+  font-weight: 300;
+  color: white;
+}
+.container #iphone .screen #main .watch h2:nth-of-type(1) {
+  text-align: right;
+}
+.container #iphone .screen #main .watch h2:nth-of-type(2) {
+  text-align: left;
+}
+.container #iphone .screen #main .watch h2:nth-last-of-type(1) {
+  text-align: start;
+}
+.container #iphone .screen #main .lap-list {
+  width: 100%;
+  height: 100px;
+  overflow-x: hidden;
+}
+.container #iphone .screen #main .lap-list p {
+  margin-top: -14px;
+  margin-left: 10px;
+  color: aliceblue;
+}
+.container #iphone .screen #main .lap-list p:nth-of-type(1) {
+  margin-top: 0;
+}
+.container #iphone .screen .head-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+.container #iphone .screen .head-bottom span span {
+  font-size: 7px;
+  font-weight: 900;
+  margin-top: -8px;
+  text-align: center;
+}/*# sourceMappingURL=iphoneRunner.css.map */

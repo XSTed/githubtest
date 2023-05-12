@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoogleAPIMediaRecorder</title>
+    <style>
+        video {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <video class="video" width="600px" controls></video>
+    <button class="record-btn">Record</button>
+    <script>
+        let btn = document.querySelector(".record-btn");
+        //捕獲哪個介面要螢幕錄製
+        btn.addEventListener("click", async function(){
+            let stream = await navigator.mediaDevices.getDisplayMedia({
+                video: true
+            })
+            
+            //需要更好的瀏覽器支持
+            const mime = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
+            ?"video/webm;codecs=vp9"
+            :"video/webm";
+            let mediaRecorder = new MediaRecorder(stream, { 
+                mimetype:mime 
+            })
+            
+            let chunks = [];
+            mediaRecorder.addEventListener('dataavailable',function(e){
+                chunks.push(e.data);
+            })
+        mediaRecorder.addEventListener('stop',function(){
+            let blob = new Blob( chunks, {
+                type: chunks[0].type
+            })
+            let url = URL.createObjectURL(blob);
+            
+            let video = document.querySelector("video");
+            video.src = url;
+            
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = 'video.webm';
+            a.click();
+        })
+        //必須手動啟動
+        mediaRecorder.start();
+    });
+        
+    </script>
+</body>
+</html>

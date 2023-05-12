@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrapOFF</title>
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
+
+    <!-- style -->
+    <style media="screen">
+        .rB {
+            color: #03a9f4;
+            animation-name: spin;
+            animation-duration: 100ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <p><i class="far fa-hand-point-right" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="fas fa-hand-point-right" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="far fa-hand-point-right fa-lg" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="far fa-hand-point-right fa-2x" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="far fa-hand-point-right fa-3x" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="far fa-hand-point-right fa-4x" aria-hidden="true">fa-hand-point-right</i></p>
+    <p><i class="far fa-hand-point-right fa-5x" aria-hidden="true">fa-hand-point-right</i></p>
+    <h1><i class="far fa-hand-point-right fa-5x" aria-hidden="true">fa-hand-point-right</i></h1>
+    <h1><i class="fas fa-viruses fa-5x" aria-hidden="true"></i>fa-viruses</h1>
+    <p><i class="fas fa-khanda fa-lg" aria-hidden="true">fas fa-khanda</i></p>
+    <p><i class="fas fa-khanda fa-2x" aria-hidden="true">fas fa-khanda</i></p>
+    <p><i class="fas fa-khanda fa-3x" aria-hidden="true">fas fa-khanda</i></p>
+    <p><i class="fas fa-khanda fa-4x" aria-hidden="true">fas fa-khanda</i></p>
+    <p><i class="fas fa-khanda fa-5x" aria-hidden="true">fas fa-khanda</i></p>
+    <h1><i class="fas fa-khanda fa-5x" aria-hidden="true">fas fa-khanda</i></h1>
+    <p><i class="fas fa-khanda fa-2x"></i>fa-khanda</p>
+    <p><i class="fas fa-khanda fa-5x fa-flip-horizontal"></i>fa-khanda</p>
+    <p><i class="fas fa-khanda fa-5x fa-flip-vertical"></i>fa-khanda</p>
+    <p><i class="fas fa-khanda fa-5x" style="color: blue;"></i>fa-khanda</p>
+    <p><i class="fas fa-spinner fa-spin fa-fw fa-5x" style="color: red;"></i>fa-spinner</p>
+    <p><i class="fas fa-spinner fa-sync-alt fa-pulse fa-fw fa-5x"></i>fa-spinner</p>
+    <p><i class="fas fa-khanda fa-spin" style="--fa-animation-direction: reverse;"></i>fa-khanda-spin</p>
+    <div class="fa-4x"><i class="fas fa-khanda fa-fw fa-5x" style="display: block;"
+            data-fa-transform="flip-h"></i>fa-khanda-spin</div>
+
+
+
+    <nav>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li><i class="fa fa-user fa-2x"></i></li>
+        </ul>
+    </nav>
+
+
+    <hr>
+
+    <button id="button" type="button" name="button">Rotate</button>
+    <i class="fab fa-twitter"></i>
+    
+
+      <div class="menu">
+      
+        <h1> Test <span><i class="fa fa-user"></i></span> </h1>
+        <div class="menu_container_1"> my itemm</div>
+      </div>
+      
+      <div class="menu">
+      
+        <h1> Tests <span><i class="fa fa-plus"></i></span> </h1>
+        <div class="menu_container_2"> my itemm</div>
+      </div>
+
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('nav li').on('click', function () {  // we are letting the li bind to the event
+                alert('This works, though');
+            });
+        });
+    </script>
+    <!-- script -->
+    <script>
+        $(function () {
+            $("#button").on('click', function () {
+                $(this).siblings().toggleClass('rB');
+            });
+        });
+    </script>
+    <script>
+        jQuery(document).ready(function() {
+        jQuery(".menu").on('click', function(event) {
+          event.preventDefault();
+      
+          jQuery(this).find('i.fa')
+            .removeClass('fa-plus')
+            .addClass('fa-times')
+        })
+      })
+    </script>
+</body>
+
+</html>

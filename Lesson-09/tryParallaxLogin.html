@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.hero {
+  width: 100%;
+  height:100%;
+  min-height: 450px;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #d9edfd;
+  transform: translate3d(0,0,0); 
+}
+
+.layer-1 {
+  animation: parallax_fg linear 20s infinite both;
+  background: url(lay8.svg) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 890px;
+}
+
+/* .layer-2 {
+  animation: parallax_fg linear 30s infinite both;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/2.png) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 145px;
+}
+
+.layer-3 {
+  animation: parallax_fg linear 55s infinite both;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/3.png) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 158px;
+} */
+
+.layer-4 {
+  animation: parallax_fg linear 75s infinite both;
+  background: url(4.png) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 468px;
+}
+
+.layer-5 {
+  animation: parallax_fg linear 95s infinite both;
+  background: url(5.png) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 311px;
+}
+
+.layer-6 {
+  animation: parallax_fg linear 120s infinite both;
+  background: url(6.png) 0 100% repeat-x;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 222px;
+}
+
+.bike-1, .bike-2 {
+  background:  url("santa.png") 0 100% no-repeat;
+  z-index: 1;
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size:  auto 75px;
+  animation: parallax_bike linear 10s infinite both;
+}
+
+.bike-2 {
+  animation: parallax_bike linear 15s infinite both;
+}
+
+@keyframes parallax_fg {  
+  0% { background-position: 2765px 100%;} 
+  100% {background-position: 550px 100%; } 
+}
+@keyframes parallax_bike {  
+  0% { background-position: -300px 100%;} 
+  100% {background-position: 2000px 100%; } 
+}
+
+.comingsoon-loading {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: blue;
+        }
+
+        .comingsoon-loading h1 {
+            position: absolute;
+            font-size: 10vh;
+            color: #ffcc00;
+            -webkit-text-stroke: 2px black;
+            text-transform: uppercase;
+        }
+
+        .comingsoon-loading h1::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            color: black;
+            -webkit-text-stroke: 0px black;
+            border-right: 2px solid black;
+            overflow: hidden;
+            animation: animate 5s linear infinite;
+            white-space: nowrap;
+        }
+
+        /* animation to fill text */
+
+        @keyframes animate {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            50%,
+            70% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="comingsoon-loading">
+            <h1 data-text="Merry ChristMas!!">Merry ChristMas!!</h1>
+        </div>
+        <div class="parallax-layer layer-6"></div>
+        <div class="parallax-layer layer-5"></div>
+        <div class="parallax-layer layer-4"></div>
+        <div class="parallax-layer bike-1"></div>
+        <div class="parallax-layer bike-2"></div>
+        <div class="parallax-layer layer-3"></div>
+        <div class="parallax-layer layer-2"></div>
+        <div class="parallax-layer layer-1"></div>
+      </div>
+</body>
+</html>
